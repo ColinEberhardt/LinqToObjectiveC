@@ -20,7 +20,7 @@ As an example of the types of query this API makes possible, let's say you have 
                                        distinct]
                                        aggregate:csvAccumulator];
 
-For a detailed discussion of the history of Linq and why I implemented this API, see the *related blog post*.
+For a detailed discussion of the history of Linq and why I implemented this API, see the [related blog post](http://www.scottlogic.co.uk/blog/colin/2013/02/linq-to-objective-c/).
 
 API Overview
 ==
