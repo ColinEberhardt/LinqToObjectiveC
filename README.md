@@ -7,18 +7,20 @@ This project contains a collection of `NSArray` methods that allow you to query 
 
 As an example of the types of query this API makes possible, let's say you have an array of `Person` instances, each with a `surname` property. The following query will create a sorted, comma-separated list of the unique surnames from the array:
 
-    Selector surnameSelector = ^id(id person){
-        return [person name];
-    };
-    
-    Accumulator csvAccumulator = ^id(id item, id aggregate) {
-        return [NSString stringWithFormat:@"%@, %@", aggregate, item];
-    };
-    
-    NSArray* surnamesList = [[[[people select:surnameSelector]
-                                       sort]
-                                       distinct]
-                                       aggregate:csvAccumulator];
+```objc
+Selector surnameSelector = ^id(id person){
+    return [person name];
+};
+
+Accumulator csvAccumulator = ^id(id item, id aggregate) {
+    return [NSString stringWithFormat:@"%@, %@", aggregate, item];
+};
+
+NSArray* surnamesList = [[[[people select:surnameSelector]
+                                   sort]
+                                   distinct]
+                                   aggregate:csvAccumulator];
+```
 
 For a detailed discussion of the history of Linq and why I implemented this API, see the [related blog post](http://www.scottlogic.co.uk/blog/colin/2013/02/linq-to-objective-c/).
 
@@ -27,12 +29,14 @@ API Overview
 
 This section provides a few brief examples of each of the API methods. A number of these examples use an array of Person instances:
 
-	interface Person : NSObject
-	
-	@property (retain, nonatomic) NSString* name;
-	@property (retain, nonatomic) NSNumber* age;
-	
-	@end
+```objc
+interface Person : NSObject
+
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) NSNumber* age;
+
+@end
+```
 
 where
 =
@@ -40,19 +44,23 @@ Filters a sequence of values based on a predicate.
 
 The following example uses the where method to find people who are 25:
 
-    NSArray* peopleWhoAre25 = [input where:^BOOL(id person) {
-        return [[person age] isEqualToNumber:@25];
-    }];
-    
+```objc
+NSArray* peopleWhoAre25 = [input where:^BOOL(id person) {
+    return [[person age] isEqualToNumber:@25];
+}];
+```
+
 select
 =
 Projects each element of a sequence into a new form. Each element in the array is transformed by a 'selector' into a new form, which is then used to populate the output array.
 
 The following example uses a selector that returns the name of each `Person` instance. The output will be an array of `NSString` instances.
 
-    NSArray* names = [input select:^id(id person) {
-        return [person name];
-    }];
+```objc
+NSArray* names = [input select:^id(id person) {
+    return [person name];
+}];
+```
 
 sort
 =
@@ -60,14 +68,18 @@ Sorts the elements of an array, either via their 'natural' sort order, or via a 
 
 As an example of natural sort, the following sorts a collection of `NSNumber` instances: 
 
-    NSArray* input = @[@21, @34, @25];
-    NSArray* sortedInput = [input sort];
+```objc
+NSArray* input = @[@21, @34, @25];
+NSArray* sortedInput = [input sort];
+```
 
 In order to sort an array of Person instances, you can use the key selector:
 
-    NSArray* sortedByName = [input sort:^id(id person) {
-        return [person name];
-    }];
+```objc
+NSArray* sortedByName = [input sort:^id(id person) {
+    return [person name];
+}];
+```
     
 ofType
 =
@@ -76,9 +88,10 @@ Filters the elements of an an array based on a specified type.
 
 In the following example a mixed array of `NSString` and `NSNumber` instances is filtered to return just the `NSString` instances:
 
-    NSArray* mixed = @[@"foo", @25, @"bar", @33];    
-    NSArray* strings = [mixed ofType:[NSString class]];
-    
+```objc
+NSArray* mixed = @[@"foo", @25, @"bar", @33];
+NSArray* strings = [mixed ofType:[NSString class]];
+```
     
 selectMany
 =
@@ -88,12 +101,14 @@ This is an interesting one! This is similar to the `select` method, however the 
 
 Here's a quick example:
 
-    NSArray* data = @[@"foo, bar", @"fubar"];
-    
-    NSArray* components = [data selectMany:^id(id string) {
-        return [string componentsSeparatedByString:@", "];
-    }];
-    
+```objc
+NSArray* data = @[@"foo, bar", @"fubar"];
+
+NSArray* components = [data selectMany:^id(id string) {
+    return [string componentsSeparatedByString:@", "];
+}];
+```
+
 A more useful example might use select-many to return all the order-lines for an array of orders.
 
 distinct
@@ -102,29 +117,35 @@ Returns distinct elements from a sequence. This simply takes an array of ties, r
 
 Here's an example:
 
-    NSArray* names = @[@"bill", @"bob", @"bob", @"brian", @"bob"];
-    NSArray* distinctNames = [names distinct];
-    // returns bill, bob and brian
-    
+```objc
+NSArray* names = @[@"bill", @"bob", @"bob", @"brian", @"bob"];
+NSArray* distinctNames = [names distinct];
+// returns bill, bob and brian
+```
+
 aggregate
 =
 Applies an accumulator function over a sequence. This method transforms an array into a single value by applying an accumulator function to each successive element.
 
 Here's an example that creates a comma separated list from an array of strings:
 
-    NSArray* names = @[@"bill", @"bob", @"brian"];
-    
-    id aggregate = [names aggregate:^id(id item, id aggregate) {
-        return [NSString stringWithFormat:@"%@, %@", aggregate, item];
-    }];
-    // returns "bill, bob, brian"
-    
+```objc
+NSArray* names = @[@"bill", @"bob", @"brian"];
+
+id aggregate = [names aggregate:^id(id item, id aggregate) {
+    return [NSString stringWithFormat:@"%@, %@", aggregate, item];
+}];
+// returns "bill, bob, brian"
+```
+
 Here's another example that returns the largest value from an array of numbers:
 
-    NSArray* numbers = @[@22, @45, @33];
-    
-    id biggestNumber = [numbers aggregate:^id(id item, id aggregate) {
-        return [item compare:aggregate] == NSOrderedDescending ? item : aggregate;
-    }];
-    // returns 45 
+```objc
+NSArray* numbers = @[@22, @45, @33];
+
+id biggestNumber = [numbers aggregate:^id(id item, id aggregate) {
+    return [item compare:aggregate] == NSOrderedDescending ? item : aggregate;
+}];
+// returns 45 
+```
 
