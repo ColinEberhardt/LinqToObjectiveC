@@ -114,6 +114,25 @@
     return [self subarrayWithRange:range];
 }
 
+- (BOOL)any:(Condition)condition
+{
+    for (id item in self) {
+        if (condition(item)) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)all:(Condition)condition
+{
+    for (id item in self) {
+        if (!condition(item)) {
+            return NO;
+        }
+    }
+    return YES;
+}
 
 
 @end

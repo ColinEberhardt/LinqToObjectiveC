@@ -40,6 +40,8 @@ The following extension methods are provided:
 - lastOrNil
 - skip
 - take
+- any
+- all
 
 API Details
 ==
@@ -236,6 +238,45 @@ take
 ```
 
 Returns an array that contains the first 'n' elements of the source array.
+
+any
+-
+
+```objc
+- (BOOL) any:(Condition)condition;
+```
+
+Tests whether any item in the array passes the given condition.
+
+As an example, you can check whether any number in an array is equal to 25:
+
+```objc
+NSArray* input = @[@25, @44, @36];
+BOOL isAnyEqual = [input any:^BOOL(id item) {
+        return [item isEqualToNumber:@25];
+    };
+// returns YES
+```
+
+all
+-
+
+```objc
+- (BOOL) all:(Condition)condition;
+```
+
+Tests whether all the items in the array pass the given condition.
+
+As an example, you can check whether all the numbers in an array are equal to 25:
+
+```objc
+NSArray* input = @[@25, @44, @36];
+BOOL isAnyEqual = [input all:^BOOL(id item) {
+        return [item isEqualToNumber:@25];
+    };
+// returns NO
+```
+
 
 
 

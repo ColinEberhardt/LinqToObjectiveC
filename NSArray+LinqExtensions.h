@@ -10,6 +10,8 @@
 
 typedef BOOL (^Predicate)(id);
 
+typedef BOOL (^Condition)(id);
+
 typedef id (^Selector)(id);
 
 typedef id (^Accumulator)(id, id);
@@ -98,6 +100,20 @@ typedef id (^Accumulator)(id, id);
  @return An array that contains the specified number of elements from the start of the input array.
  */
 - (NSArray*) take:(NSUInteger)count;
+
+/** Determines whether all the element of the array satisfies a condition.
+ 
+ @param condition The condition to test elements against.
+ @return Whether all the element of the array satisfies a condition.
+ */
+- (BOOL) all:(Condition)condition;
+
+/** Determines whether any the element of the array satisfies a condition.
+ 
+ @param condition The condition to test elements against.
+ @return Whether any the element of the array satisfies a condition.
+ */
+- (BOOL) any:(Condition)condition;
 
 
 @end

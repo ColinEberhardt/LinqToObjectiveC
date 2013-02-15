@@ -169,4 +169,30 @@
     STAssertEquals([[input skip:2][0] name], @"ian", nil);
 }
 
+
+- (void)testAny
+{
+    NSArray* input = @[@25, @44, @36];
+    
+    STAssertFalse([input any:^BOOL(id item) {
+        return [item isEqualToNumber:@33];
+    }], nil);
+    
+    STAssertTrue([input any:^BOOL(id item) {
+        return [item isEqualToNumber:@25];
+    }], nil);
+}
+
+- (void)testAll
+{
+    NSArray* input = @[@25, @25, @25];
+    
+    STAssertFalse([input all:^BOOL(id item) {
+        return [item isEqualToNumber:@33];
+    }], nil);
+    
+    STAssertTrue([input all:^BOOL(id item) {
+        return [item isEqualToNumber:@25];
+    }], nil);
+}
 @end
