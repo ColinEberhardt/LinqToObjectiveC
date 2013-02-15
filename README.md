@@ -36,6 +36,10 @@ The following extension methods are provided:
 - selectMany
 - distinct
 - aggregate
+- firstOrNil
+- lastOrNil
+- skip
+- take
 
 API Details
 ==
@@ -196,4 +200,42 @@ id biggestNumber = [numbers aggregate:^id(id item, id aggregate) {
 }];
 // returns 45 
 ```
+
+firstOrNil
+-
+
+```objc
+- (id) firstOrNil;
+```
+
+Returns the first element of an array, or nil if the array is empty.
+
+lastOrNil
+-
+
+```objc
+- (id) lastOrNil;
+```
+
+Returns the last element of an array, or nil if the array is empty
+
+skip
+-
+
+```objc
+- (NSArray*) skip:(NSUInteger)count;
+```
+
+Returns an array that skips the first 'n' elements of the source array, including the rest.
+
+take
+-
+
+```objc
+- (NSArray*) take:(NSUInteger)count;
+```
+
+Returns an array that contains the first 'n' elements of the source array.
+
+
 
