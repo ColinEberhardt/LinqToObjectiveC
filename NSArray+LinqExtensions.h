@@ -73,5 +73,31 @@ typedef id (^Accumulator)(id, id);
  */
 - (id) aggregate:(Accumulator)accumulator;
 
+/** Returns the first item from the source array, or nil if the array is empty.
+ 
+ @return The first item from the source array, or nil if the array is empty.
+ */
+- (id) firstOrNil;
+
+/** Returns the last item from the source array, or nil if the array is empty.
+ 
+ @return The last item from the source array, or nil if the array is empty.
+ */
+- (id) lastOrNil;
+
+/** Bypasses a specified number of elements in an array and then returns the remaining elements.
+ 
+ @param count The number of elements to bypass.
+ @return An array that contains the elements that occur after the specified index in the input array.
+ */
+- (NSArray*) skip:(NSUInteger)count;
+
+/** Returns a specified number of contiguous elements from the start of an array.
+ 
+ @param count The number of elements to take.
+ @return An array that contains the specified number of elements from the start of the input array.
+ */
+- (NSArray*) take:(NSUInteger)count;
+
 
 @end

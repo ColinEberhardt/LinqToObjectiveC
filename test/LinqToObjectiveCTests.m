@@ -132,4 +132,41 @@
     STAssertEqualObjects(biggestNumber, @45, nil);
 }
 
+- (void)testFirstOrNil
+{
+    NSArray* input = [self createTestData];
+    NSArray* emptyArray = @[];
+    
+    STAssertNil([emptyArray firstOrNil], nil);
+    STAssertEquals([[input firstOrNil] name], @"bob", nil);
+}
+
+- (void)testLastOrNil
+{
+    NSArray* input = [self createTestData];
+    NSArray* emptyArray = @[];
+    
+    STAssertNil([emptyArray lastOrNil], nil);
+    STAssertEquals([[input lastOrNil] name], @"joe", nil);
+}
+
+- (void)testTake
+{
+    NSArray* input = [self createTestData];
+    
+    STAssertEquals([input take:0].count, 0U, nil);
+    STAssertEquals([input take:5].count, 5U, nil);
+    STAssertEquals([input take:50].count, 5U, nil);
+    STAssertEquals([[input take:2][0] name], @"bob", nil);
+}
+
+- (void)testSkip
+{
+    NSArray* input = [self createTestData];
+    
+    STAssertEquals([input skip:0].count, 5U, nil);
+    STAssertEquals([input skip:5].count, 0U, nil);
+    STAssertEquals([[input skip:2][0] name], @"ian", nil);
+}
+
 @end

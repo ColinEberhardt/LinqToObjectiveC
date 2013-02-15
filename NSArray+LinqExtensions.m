@@ -87,5 +87,33 @@
     return aggregate;
 }
 
+- (id)firstOrNil
+{
+    return self.count == 0 ? nil : self[0];
+}
+
+- (id)lastOrNil
+{
+    return self.count == 0 ? nil : self[self.count-1];
+}
+
+- (NSArray*)skip:(NSUInteger)count
+{
+    if (count < self.count) {
+        NSRange range = {.location = count, .length = self.count - count};
+        return [self subarrayWithRange:range];
+    } else {
+        return @[];
+    }
+}
+
+- (NSArray*)take:(NSUInteger)count
+{
+    NSRange range = { .location=0,
+        .length = count > self.count ? self.count : count};
+    return [self subarrayWithRange:range];
+}
+
+
 
 @end
