@@ -27,6 +27,19 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 API Overview
 ==
 
+The following extension methods are provided:
+
+- where
+- select
+- sort
+- ofType
+- selectMany
+- distinct
+- aggregate
+
+API Details
+==
+
 This section provides a few brief examples of each of the API methods. A number of these examples use an array of Person instances:
 
 ```objc
@@ -39,7 +52,7 @@ interface Person : NSObject
 ```
 
 where
-=
+-
 
 ```objc
 - (NSArray*) where:(Predicate)predicate;
@@ -56,7 +69,7 @@ NSArray* peopleWhoAre25 = [input where:^BOOL(id person) {
 ```
 
 select
-=
+-
 
 ```objc
 - (NSArray*) select:(Selector)selector;
@@ -73,7 +86,7 @@ NSArray* names = [input select:^id(id person) {
 ```
 
 sort
-=
+-
 
 ```objc
 - (NSArray*) sort;
@@ -98,7 +111,7 @@ NSArray* sortedByName = [input sort:^id(id person) {
 ```
     
 ofType
-=
+-
 
 ```objc
 - (NSArray*) ofType:(Class)type;
@@ -114,7 +127,7 @@ NSArray* strings = [mixed ofType:[NSString class]];
 ```
     
 selectMany
-=
+-
 
 ```objc
 - (NSArray*) selectMany:(Selector)transform;
@@ -137,7 +150,7 @@ NSArray* components = [data selectMany:^id(id string) {
 A more useful example might use select-many to return all the order-lines for an array of orders.
 
 distinct
-=
+-
 
 ```objc
 - (NSArray*) distinct;
@@ -154,7 +167,7 @@ NSArray* distinctNames = [names distinct];
 ```
 
 aggregate
-=
+-
 
 ```objc
 - (id) aggregate:(Accumulator)accumulator;
