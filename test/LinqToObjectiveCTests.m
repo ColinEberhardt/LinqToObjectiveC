@@ -117,11 +117,19 @@
 {
     NSArray* names = @[@"bill", @"bob", @"brian"];
     
-    id aggregate = [names aggregate:^id(id item, id aggregate) {
+    id csv = [names aggregate:^id(id item, id aggregate) {
         return [NSString stringWithFormat:@"%@, %@", aggregate, item];
     }];
     
-    STAssertEqualObjects(aggregate, @"bill, bob, brian", nil);
+    STAssertEqualObjects(csv, @"bill, bob, brian", nil);
+    
+    NSArray* numbers = @[@22, @45, @33];
+    
+    id biggestNumber = [numbers aggregate:^id(id item, id aggregate) {
+        return [item compare:aggregate] == NSOrderedDescending ? item : aggregate;
+    }];
+    
+    STAssertEqualObjects(biggestNumber, @45, nil);
 }
 
 @end
