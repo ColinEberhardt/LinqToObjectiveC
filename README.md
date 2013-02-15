@@ -40,6 +40,11 @@ interface Person : NSObject
 
 where
 =
+
+```objc
+- (NSArray*) where:(Predicate)predicate;
+```
+
 Filters a sequence of values based on a predicate.
 
 The following example uses the where method to find people who are 25:
@@ -52,6 +57,11 @@ NSArray* peopleWhoAre25 = [input where:^BOOL(id person) {
 
 select
 =
+
+```objc
+- (NSArray*) select:(Selector)selector;
+```
+
 Projects each element of a sequence into a new form. Each element in the array is transformed by a 'selector' into a new form, which is then used to populate the output array.
 
 The following example uses a selector that returns the name of each `Person` instance. The output will be an array of `NSString` instances.
@@ -64,6 +74,12 @@ NSArray* names = [input select:^id(id person) {
 
 sort
 =
+
+```objc
+- (NSArray*) sort;
+- (NSArray*) sort:(Selector)keySelector;
+```
+
 Sorts the elements of an array, either via their 'natural' sort order, or via a `keySelector`.
 
 As an example of natural sort, the following sorts a collection of `NSNumber` instances: 
@@ -84,6 +100,10 @@ NSArray* sortedByName = [input sort:^id(id person) {
 ofType
 =
 
+```objc
+- (NSArray*) ofType:(Class)type;
+```
+
 Filters the elements of an an array based on a specified type.
 
 In the following example a mixed array of `NSString` and `NSNumber` instances is filtered to return just the `NSString` instances:
@@ -95,6 +115,11 @@ NSArray* strings = [mixed ofType:[NSString class]];
     
 selectMany
 =
+
+```objc
+- (NSArray*) selectMany:(Selector)transform;
+```
+
 Projects each element of a sequence to an `NSArray` and flattens the resulting sequences into one sequence.
 
 This is an interesting one! This is similar to the `select` method, however the selector must return an `NSArray`, with the select-many operation flattening the returned arrays into a single sequence.
@@ -113,6 +138,11 @@ A more useful example might use select-many to return all the order-lines for an
 
 distinct
 =
+
+```objc
+- (NSArray*) distinct;
+```
+
 Returns distinct elements from a sequence. This simply takes an array of ties, returning an array of the distinct (i.e. unique) values in source order.
 
 Here's an example:
@@ -125,6 +155,11 @@ NSArray* distinctNames = [names distinct];
 
 aggregate
 =
+
+```objc
+- (id) aggregate:(Accumulator)accumulator;
+```
+
 Applies an accumulator function over a sequence. This method transforms an array into a single value by applying an accumulator function to each successive element.
 
 Here's an example that creates a comma separated list from an array of strings:
