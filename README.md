@@ -1,9 +1,9 @@
 Linq To Objective-C
 ================
 
-Brings a Linq-style fluent query API to Objective-C.
+Bringing a Linq-style fluent query API to Objective-C.
 
-This project contains a collection of `NSArray` methods that allow you to query arrays using a fluent syntax which was inspired by Linq. In order to use *Linq to Objective-C* simply copy the `NSArray+LinqExtensions.h`and `NSArray+LinqExtensions.m` files into your project and import the header into any file that you wish to use this API from.
+This project contains a collection of `NSArray` methods that allow you to execute query using a fluent syntax, inspired by Linq. In order to use *Linq to Objective-C* simply copy the `NSArray+LinqExtensions.h`and `NSArray+LinqExtensions.m` files into your project and import the header within any file where you wish to use the API.
 
 As an example of the types of query this API makes possible, let's say you have an array of `Person` instances, each with a `surname` property. The following query will create a sorted, comma-separated list of the unique surnames from the array:
 
@@ -254,7 +254,7 @@ As an example, you can check whether any number in an array is equal to 25:
 NSArray* input = @[@25, @44, @36];
 BOOL isAnyEqual = [input any:^BOOL(id item) {
         return [item isEqualToNumber:@25];
-    };
+    }];
 // returns YES
 ```
 
@@ -271,9 +271,9 @@ As an example, you can check whether all the numbers in an array are equal to 25
 
 ```objc
 NSArray* input = @[@25, @44, @36];
-BOOL isAnyEqual = [input all:^BOOL(id item) {
+BOOL areAllEqual = [input all:^BOOL(id item) {
         return [item isEqualToNumber:@25];
-    };
+    }];
 // returns NO
 ```
 
