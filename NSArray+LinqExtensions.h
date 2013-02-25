@@ -30,10 +30,10 @@ typedef id (^Accumulator)(id, id);
 
 /** Projects each element of a sequence into a new form.
  
- @param selector Projects each element of a sequence into a new form.
+ @param selector A transform function to apply to each element.
  @return An array whose elements are the result of invoking the transform function on each element of source.
  */
-- (NSArray*) select:(Selector)selector;
+- (NSArray*) select:(Selector)transform;
 
 /** Sorts the elements of a sequence in ascending order.
  

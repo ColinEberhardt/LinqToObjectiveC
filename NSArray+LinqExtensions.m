@@ -21,11 +21,11 @@
     return result;
 }
 
-- (NSArray *)select:(Selector)selector
+- (NSArray *)select:(Selector)transform
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
-        [result addObject:selector(item)];
+        [result addObject:transform(item)];
     }
     return result;
 }

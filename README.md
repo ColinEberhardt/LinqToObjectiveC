@@ -79,7 +79,7 @@ select
 -
 
 ```objc
-- (NSArray*) select:(Selector)selector;
+- (NSArray*) select:(Selector)transform;
 ```
 
 Projects each element of a sequence into a new form. Each element in the array is transformed by a 'selector' into a new form, which is then used to populate the output array.
