@@ -27,7 +27,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 API Overview
 ==
 
-The following methods are provided:
+The following `NSArray` methods are provided:
 
 - where
 - select
@@ -42,6 +42,7 @@ The following methods are provided:
 - take
 - any
 - all
+- groupBy
 
 API Details
 ==
@@ -277,6 +278,29 @@ BOOL areAllEqual = [input all:^BOOL(id item) {
 // returns NO
 ```
 
+groupBy
+-
+
+```objc
+- (NSDictionary*) groupBy:(Selector)groupKeySelector;
+```
+
+Groups the items in an array returning a dictionary. The `groupKeySelector` is applied to each element in the array to determine which group it belongs to.
+
+The returned dictionary has the group values (as returned by the key selector) as its keys, with an `NSArray` for each value, containing all the items within that group.
+
+As an example, if you wanted to group a number of strings by their first letter, you could do the following:
+
+```objc
+NSArray* input = @[@"James", @"Jim", @"Bob"];
+    
+NSDictionary* groupedByFirstLetter = [input groupBy:^id(id name) {
+   return [name substringToIndex:1];
+}];
+// the returned dictionary is as follows:
+// "J" => ["James", "Jim"]
+// "B" => ["Bob"]
+```
 
 
 
