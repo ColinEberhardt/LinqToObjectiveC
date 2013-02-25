@@ -115,5 +115,11 @@ typedef id (^Accumulator)(id, id);
  */
 - (BOOL) any:(Condition)condition;
 
+/** Groups the elements of the array by keys provided by the given key selector. The returned dictionary will contain the keys that are the result of applying the key selector function to each item of the array, and the value for each key is an array of all the items that return the same key value.
+ 
+ @param groupKeySelector Determines the group key for each item in the array
+ @return A dictionary that groups the items via the given key selector.
+ */
+- (NSDictionary*) groupBy:(Selector)groupKeySelector;
 
 @end

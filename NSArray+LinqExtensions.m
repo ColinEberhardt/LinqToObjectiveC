@@ -134,5 +134,20 @@
     return YES;
 }
 
+- (NSDictionary*)groupBy:(Selector)groupKeySelector
+{
+    NSMutableDictionary* groupedItems = [[NSMutableDictionary alloc] init];
+    for (id item in self) {
+        id key = groupKeySelector(item);
+        NSMutableArray* arrayForKey;
+        if (!(arrayForKey = [groupedItems objectForKey:key])){
+            arrayForKey = [[NSMutableArray alloc] init];
+            [groupedItems setObject:arrayForKey forKey:key];
+        }
+        [arrayForKey addObject:item];
+    }
+    return groupedItems;
+}
+
 
 @end

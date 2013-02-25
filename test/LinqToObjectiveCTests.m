@@ -195,4 +195,30 @@
         return [item isEqualToNumber:@25];
     }], nil);
 }
+
+- (void)testGroupBy
+{
+    NSArray* input = @[@"James", @"Jim", @"Bob"];
+    
+    NSDictionary* groupedByFirstLetter = [input groupBy:^id(id name) {
+        return [name substringToIndex:1];
+    }];
+    
+    STAssertEquals(groupedByFirstLetter.count, 2U, nil);
+    
+    // test the group keys
+    NSArray* keys = [groupedByFirstLetter allKeys];
+    STAssertEqualObjects(@"J", keys[0], nil);
+    STAssertEqualObjects(@"B", keys[1], nil);
+    
+    // test that the correct items are in each group
+    NSArray* groupOne = groupedByFirstLetter[@"J"];
+    STAssertEquals(groupOne.count, 2U, nil);
+    STAssertEqualObjects(@"James", groupOne[0], nil);
+    STAssertEqualObjects(@"Jim", groupOne[1], nil);
+    
+    NSArray* groupTwo = groupedByFirstLetter[@"B"];
+    STAssertEquals(groupTwo.count, 1U, nil);
+    STAssertEqualObjects(@"Bob", groupTwo[0], nil);
+}
 @end

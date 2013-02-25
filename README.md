@@ -27,7 +27,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 API Overview
 ==
 
-The following extension methods are provided:
+The following methods are provided:
 
 - where
 - select
