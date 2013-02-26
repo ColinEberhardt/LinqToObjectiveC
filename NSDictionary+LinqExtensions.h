@@ -27,9 +27,15 @@ typedef BOOL (^KeyValuePredicate)(id, id);
 /** Projects each element of the dictionary into a new form.
  
  @param selector A transform function to apply to each element.
- @return A dicionary whose elements are the result of invoking the transform function on each element of source.
+ @return A dicionary whose elements are the result of invoking the transform function on each key-value pair of source.
  */
 - (NSDictionary*) select:(KeyValueSelector)selector;
 
+/** Projects each element of the dictionary to a new form, which is used to populate the returned array.
+ 
+ @param selector A transform function to apply to each element.
+ @return An array whose elements are the result of invoking the transform function on each key-value pair of source.
+ */
+- (NSArray*) toArray:(KeyValueSelector)selector;
 
 @end

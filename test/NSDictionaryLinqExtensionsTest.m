@@ -48,5 +48,23 @@
     STAssertEqualObjects(result[@"D"], @"D, F", nil);
 }
 
+- (void)testToArray
+{
+    NSDictionary* input = @{@"A" : @"Apple",
+    @"B" : @"Banana",
+    @"C" : @"Carrot"};
+
+    NSArray* result = [input toArray:^id(id key, id value) {
+        return [NSString stringWithFormat:@"%@, %@", key, value];
+    }];
+    
+    NSLog(@"%@", result);
+    
+    STAssertEquals(result.count, 3U, nil);
+    STAssertEqualObjects(result[0], @"A, Apple", nil);
+    STAssertEqualObjects(result[1], @"B, Banana", nil);
+    STAssertEqualObjects(result[2], @"C, Carrot", nil);
+}
+
 
 @end

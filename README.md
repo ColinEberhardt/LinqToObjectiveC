@@ -47,6 +47,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 
 - [where](#dictionary-where)
 - [select](#dictionary-select)
+- [toArray](#dictionary-toArray)
 
 
 ## NSArray methods
@@ -330,5 +331,29 @@ NSDictionary* result = [input select:^id(id key, id value) {
 }];
 ```
 
+### <a name="dictionary-toArray"></a>toArray
+
+```objc
+- (NSArray*) toArray:(KeyValueSelector)selector;
+```
+
+Projects each key-value pair in a dictionary into a new form, which is used to populate the output array. 
+
+The following example takes a dictionary which has string values, returning an array which concatenates the key and value for each item in the dictionary.
+
+```objc
+NSDictionary* input = @{@"A" : @"Apple", @"B" : @"Banana", @"C" : @"Carrot"};
+
+NSArray* result = [input toArray:^id(id key, id value) {
+    return [NSString stringWithFormat:@"%@, %@", key, value];
+}];
+
+// result:
+// (
+//    "A, Apple",
+//    "B, Banana",
+//    "C, Carrot"
+// )
+```
 
 

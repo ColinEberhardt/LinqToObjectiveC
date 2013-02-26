@@ -30,4 +30,13 @@
     return result;
 }
 
+- (NSArray *)toArray:(KeyValueSelector)selector
+{
+    NSMutableArray* result = [[NSMutableArray alloc] init];
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [result addObject:selector(key, obj)];
+    }];
+    return result;
+}
+
 @end
