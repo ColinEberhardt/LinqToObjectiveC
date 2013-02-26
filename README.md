@@ -45,6 +45,9 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 
 `NSDictionary` methods:
 
+- [where](#dictionary-where)
+- [select](#dictionary-select)
+
 
 ## NSArray methods
 
@@ -288,6 +291,43 @@ NSDictionary* groupedByFirstLetter = [input groupBy:^id(id name) {
 // the returned dictionary is as follows:
 // "J" => ["James", "Jim"]
 // "B" => ["Bob"]
+```
+
+## NSDictionary methods
+
+This section provides a few brief examples of each of the API methods. 
+
+### <a name="dictionary-where"></a>where
+
+
+```objc
+- (NSDictionary*) where:(KeyValuePredicate)predicate;
+```
+
+Filters a dictionary based on a predicate.
+
+The following example uses filters a dictionary to remove any keys that are equal to their value.
+
+```objc
+NSDictionary* result = [input where:^BOOL(id key, id value) {
+   return [key isEqual:value];
+}];
+```
+
+### <a name="dictionary-select"></a>select
+
+```objc
+- (NSDictionary*) select:(KeyValueSelector)selector;
+```
+
+Projects each key-value pair in a dictionary into a new form. Each key-value pair is transformed by a 'selector' into a new form, which is then used to populate the values of the output dictionary. 
+
+The following example takes a dictionary which has string values, returning a new dictionary where each value is the first character of the source string.
+
+```objc
+NSDictionary* result = [input select:^id(id key, id value) {
+    return [value substringToIndex:1];
+}];
 ```
 
 
