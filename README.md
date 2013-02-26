@@ -1,5 +1,4 @@
-Linq To Objective-C
-================
+# Linq To Objective-C
 
 Bringing a Linq-style fluent query API to Objective-C.
 
@@ -24,10 +23,10 @@ NSArray* surnamesList = [[[[people select:surnameSelector]
 
 For a detailed discussion of the history of Linq and why I implemented this API, see the [related blog post](http://www.scottlogic.co.uk/blog/colin/2013/02/linq-to-objective-c/).
 
-API Overview
-==
+# API Overview
 
-The following `NSArray` methods are provided:
+
+`NSArray` methods:
 
 - [where](#where)
 - [select](#select)
@@ -44,8 +43,10 @@ The following `NSArray` methods are provided:
 - [all](#all)
 - [groupBy](#groupBy)
 
-API Details
-==
+`NSDictionary` methods:
+
+
+## NSArray methods
 
 This section provides a few brief examples of each of the API methods. A number of these examples use an array of Person instances:
 
@@ -58,8 +59,8 @@ interface Person : NSObject
 @end
 ```
 
-<a name="where"></a>where
--
+### <a name="where"></a>where
+
 
 ```objc
 - (NSArray*) where:(Predicate)predicate;
@@ -75,8 +76,7 @@ NSArray* peopleWhoAre25 = [input where:^BOOL(id person) {
 }];
 ```
 
-<a name="select"></a>select
--
+### <a name="select"></a>select
 
 ```objc
 - (NSArray*) select:(Selector)transform;
@@ -92,8 +92,7 @@ NSArray* names = [input select:^id(id person) {
 }];
 ```
 
-<a name="sort"></a>sort
--
+### <a name="sort"></a>sort
 
 ```objc
 - (NSArray*) sort;
@@ -117,8 +116,7 @@ NSArray* sortedByName = [input sort:^id(id person) {
 }];
 ```
     
-<a name="ofType"></a>ofType
--
+### <a name="ofType"></a>ofType
 
 ```objc
 - (NSArray*) ofType:(Class)type;
@@ -133,8 +131,7 @@ NSArray* mixed = @[@"foo", @25, @"bar", @33];
 NSArray* strings = [mixed ofType:[NSString class]];
 ```
     
-<a name="selectMany"></a>selectMany
--
+### <a name="selectMany"></a>selectMany
 
 ```objc
 - (NSArray*) selectMany:(Selector)transform;
@@ -156,8 +153,7 @@ NSArray* components = [data selectMany:^id(id string) {
 
 A more useful example might use select-many to return all the order-lines for an array of orders.
 
-<a name="distinct"></a>distinct
--
+### <a name="distinct"></a>distinct
 
 ```objc
 - (NSArray*) distinct;
@@ -173,8 +169,7 @@ NSArray* distinctNames = [names distinct];
 // returns bill, bob and brian
 ```
 
-<a name="aggregate"></a>aggregate
--
+### <a name="aggregate"></a>aggregate
 
 ```objc
 - (id) aggregate:(Accumulator)accumulator;
@@ -204,8 +199,7 @@ id biggestNumber = [numbers aggregate:^id(id item, id aggregate) {
 // returns 45 
 ```
 
-<a name="firstOrNil"></a>firstOrNil
--
+### <a name="firstOrNil"></a>firstOrNil
 
 ```objc
 - (id) firstOrNil;
@@ -213,8 +207,7 @@ id biggestNumber = [numbers aggregate:^id(id item, id aggregate) {
 
 Returns the first element of an array, or nil if the array is empty.
 
-<a name="lastOrNil"></a>lastOrNil
--
+### <a name="lastOrNil"></a>lastOrNil
 
 ```objc
 - (id) lastOrNil;
@@ -222,8 +215,7 @@ Returns the first element of an array, or nil if the array is empty.
 
 Returns the last element of an array, or nil if the array is empty
 
-<a name="skip"></a>skip
--
+### <a name="skip"></a>skip
 
 ```objc
 - (NSArray*) skip:(NSUInteger)count;
@@ -231,8 +223,7 @@ Returns the last element of an array, or nil if the array is empty
 
 Returns an array that skips the first 'n' elements of the source array, including the rest.
 
-<a name="take"></a>take
--
+### <a name="take"></a>take
 
 ```objc
 - (NSArray*) take:(NSUInteger)count;
@@ -240,8 +231,7 @@ Returns an array that skips the first 'n' elements of the source array, includin
 
 Returns an array that contains the first 'n' elements of the source array.
 
-<a name="any"></a>any
--
+### <a name="any"></a>any
 
 ```objc
 - (BOOL) any:(Condition)condition;
@@ -259,8 +249,7 @@ BOOL isAnyEqual = [input any:^BOOL(id item) {
 // returns YES
 ```
 
-<a name="all"></a>all
--
+### <a name="all"></a>all
 
 ```objc
 - (BOOL) all:(Condition)condition;
@@ -278,8 +267,7 @@ BOOL areAllEqual = [input all:^BOOL(id item) {
 // returns NO
 ```
 
-<a name="groupBy"></a>groupBy
--
+### <a name="groupBy"></a>groupBy
 
 ```objc
 - (NSDictionary*) groupBy:(Selector)groupKeySelector;
