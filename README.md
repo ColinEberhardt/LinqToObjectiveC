@@ -29,20 +29,20 @@ API Overview
 
 The following `NSArray` methods are provided:
 
-- where
-- select
-- sort
-- ofType
-- selectMany
-- distinct
-- aggregate
-- firstOrNil
-- lastOrNil
-- skip
-- take
-- any
-- all
-- groupBy
+- [where](#where)
+- [select](#select)
+- [sort](#sort)
+- [ofType](#ofType)
+- [selectMany](#selectMany)
+- [distinct](#distinct)
+- [aggregate](#aggregate)
+- [firstOrNil](#firstOrNil)
+- [lastOrNil](#lastOrNil)
+- [skip](#skip)
+- [take](#take)
+- [any](#any)
+- [all](#all)
+- [groupBy](#groupBy)
 
 API Details
 ==
@@ -58,7 +58,7 @@ interface Person : NSObject
 @end
 ```
 
-where
+<a name="where"></a>where
 -
 
 ```objc
@@ -75,7 +75,7 @@ NSArray* peopleWhoAre25 = [input where:^BOOL(id person) {
 }];
 ```
 
-select
+<a name="select"></a>select
 -
 
 ```objc
@@ -92,7 +92,7 @@ NSArray* names = [input select:^id(id person) {
 }];
 ```
 
-sort
+<a name="sort"></a>sort
 -
 
 ```objc
@@ -117,7 +117,7 @@ NSArray* sortedByName = [input sort:^id(id person) {
 }];
 ```
     
-ofType
+<a name="ofType"></a>ofType
 -
 
 ```objc
@@ -133,7 +133,7 @@ NSArray* mixed = @[@"foo", @25, @"bar", @33];
 NSArray* strings = [mixed ofType:[NSString class]];
 ```
     
-selectMany
+<a name="selectMany"></a>selectMany
 -
 
 ```objc
@@ -156,7 +156,7 @@ NSArray* components = [data selectMany:^id(id string) {
 
 A more useful example might use select-many to return all the order-lines for an array of orders.
 
-distinct
+<a name="distinct"></a>distinct
 -
 
 ```objc
@@ -173,7 +173,7 @@ NSArray* distinctNames = [names distinct];
 // returns bill, bob and brian
 ```
 
-aggregate
+<a name="aggregate"></a>aggregate
 -
 
 ```objc
@@ -204,7 +204,7 @@ id biggestNumber = [numbers aggregate:^id(id item, id aggregate) {
 // returns 45 
 ```
 
-firstOrNil
+<a name="firstOrNil"></a>firstOrNil
 -
 
 ```objc
@@ -213,7 +213,7 @@ firstOrNil
 
 Returns the first element of an array, or nil if the array is empty.
 
-lastOrNil
+<a name="lastOrNil"></a>lastOrNil
 -
 
 ```objc
@@ -222,7 +222,7 @@ lastOrNil
 
 Returns the last element of an array, or nil if the array is empty
 
-skip
+<a name="skip"></a>skip
 -
 
 ```objc
@@ -231,7 +231,7 @@ skip
 
 Returns an array that skips the first 'n' elements of the source array, including the rest.
 
-take
+<a name="take"></a>take
 -
 
 ```objc
@@ -240,7 +240,7 @@ take
 
 Returns an array that contains the first 'n' elements of the source array.
 
-any
+<a name="any"></a>any
 -
 
 ```objc
@@ -259,7 +259,7 @@ BOOL isAnyEqual = [input any:^BOOL(id item) {
 // returns YES
 ```
 
-all
+<a name="all"></a>all
 -
 
 ```objc
@@ -278,7 +278,7 @@ BOOL areAllEqual = [input all:^BOOL(id item) {
 // returns NO
 ```
 
-groupBy
+<a name="groupBy"></a>groupBy
 -
 
 ```objc
