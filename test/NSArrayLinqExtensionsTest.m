@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Colin Eberhardt. All rights reserved.
 //
 
-#import "LinqToObjectiveCTests.h"
+#import "NSArrayLinqExtensionsTest.h"
 #import "Person.h"
 #import "NSArray+LinqExtensions.h"
 
-@implementation LinqToObjectiveCTests
+@implementation NSArrayLinqExtensionsTest
 
 - (NSArray*) createTestData
 {

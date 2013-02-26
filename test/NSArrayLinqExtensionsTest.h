@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface LinqToObjectiveCTests : SenTestCase
+@interface NSArrayLinqExtensionsTest : SenTestCase
 
 @end
