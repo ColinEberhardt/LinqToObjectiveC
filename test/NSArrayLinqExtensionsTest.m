@@ -222,7 +222,7 @@
     STAssertEqualObjects(@"Bob", groupTwo[0], nil);
 }
 
-- (void)testToDictionary
+- (void)testToDictionaryWithValueSelector
 {
     NSArray* input = @[@"James", @"Jim", @"Bob"];
 
@@ -245,5 +245,25 @@
     // test the values
     STAssertEqualObjects(dictionary[@"J"], @"jim", nil);
     STAssertEqualObjects(dictionary[@"B"], @"bob", nil);
+}
+
+- (void)testToDictionary
+{
+    NSArray* input = @[@"Jim", @"Bob"];
+    
+    NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
+        return [item substringToIndex:1];
+    }];
+    
+    STAssertEquals(dictionary.count, 2U, nil);
+    
+    // test the group keys
+    NSArray* keys = [dictionary allKeys];
+    STAssertEqualObjects(@"J", keys[0], nil);
+    STAssertEqualObjects(@"B", keys[1], nil);
+    
+    // test the values
+    STAssertEqualObjects(dictionary[@"J"], @"Jim", nil);
+    STAssertEqualObjects(dictionary[@"B"], @"Bob", nil);
 }
 @end

@@ -300,10 +300,11 @@ NSDictionary* groupedByFirstLetter = [input groupBy:^id(id name) {
 ### <a name="toDicionary"></a>toDicionary
 
 ```objc
+- (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector;
 - (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector valueSelector:(Selector)valueSelector;
 ```
 
-Transforms the source array into a dictionary by applying the given keySelector and valueSelector to each item in the array.
+Transforms the source array into a dictionary by applying the given keySelector and (optional) valueSelector to each item in the array. If you use the `toDictionaryWithKeySelector:` method, or the `toDictionaryWithKeySelector:valueSelector:` method with a `nil` valueSelector, the value for each dictionary item is simply the item from the source array.
 
 As an example, the following code takes an array of names, creating a dictionary where the key is the first letter of each name and the value is the name (in lower case).
 
@@ -321,6 +322,23 @@ NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
 //    F = frank;
 //    J = jim;
 //    B = bob;
+// )
+```
+
+Whereas in the following there is no value selector, so the strings from the source array are used directly.
+
+```objc
+NSArray* input = @[@"Frank", @"Jim", @"Bob"];
+
+NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
+    return [item substringToIndex:1];
+}];
+
+// result:
+// ()
+//    F = Frank;
+//    J = Jim;
+//    B = Bob;
 // )
 ```
 

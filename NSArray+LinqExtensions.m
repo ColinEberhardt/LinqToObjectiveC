@@ -154,10 +154,15 @@
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     for (id item in self) {
         id key = keySelector(item);
-        id value = valueSelector(item);
+        id value = valueSelector!=nil ? valueSelector(item) : item;
         [result setObject:value forKey:key];
     }
     return result;
+}
+
+- (NSDictionary *)toDictionaryWithKeySelector:(Selector)keySelector
+{
+    return [self toDictionaryWithKeySelector:keySelector valueSelector:nil];
 }
 
 
