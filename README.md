@@ -42,6 +42,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 - [any](#any)
 - [all](#all)
 - [groupBy](#groupBy)
+- [toDictionary](#toDictionary)
 
 `NSDictionary` methods:
 
@@ -290,8 +291,37 @@ NSDictionary* groupedByFirstLetter = [input groupBy:^id(id name) {
    return [name substringToIndex:1];
 }];
 // the returned dictionary is as follows:
-// "J" => ["James", "Jim"]
-// "B" => ["Bob"]
+// {
+//     J = ("James", "Jim");
+//     B = ("Bob");
+// }
+```
+
+### <a name="toDicionary"></a>toDicionary
+
+```objc
+- (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector valueSelector:(Selector)valueSelector;
+```
+
+Transforms the source array into a dictionary by applying the given keySelector and valueSelector to each item in the array.
+
+As an example, the following code takes an array of names, creating a dictionary where the key is the first letter of each name and the value is the name (in lower case).
+
+```objc
+NSArray* input = @[@"Frank", @"Jim", @"Bob"];
+
+NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
+    return [item substringToIndex:1];
+} valueSelector:^id(id item) {
+    return [item lowercaseString];
+}];
+
+// result:
+// (
+//    F = frank;
+//    J = jim;
+//    B = bob;
+// )
 ```
 
 ## NSDictionary methods

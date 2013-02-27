@@ -122,4 +122,12 @@ typedef id (^Accumulator)(id, id);
  */
 - (NSDictionary*) groupBy:(Selector)groupKeySelector;
 
+/** Transforms the source array into a dictionary by applying the given keySelector and valueSelector to each item in the array.
+ 
+ @param keySelector A selector function that is applied to each item to determine the key it will have within the returned dictionary.
+ @param valueSelector A selector function that is applied to each item to determine the value it will have within the returned dictionary.
+ @return A dictionary that is the result of applying the supplied selector functions to each item of the array.
+ */
+- (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector valueSelector:(Selector)valueSelector;
+
 @end

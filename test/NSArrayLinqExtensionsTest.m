@@ -221,4 +221,29 @@
     STAssertEquals(groupTwo.count, 1U, nil);
     STAssertEqualObjects(@"Bob", groupTwo[0], nil);
 }
+
+- (void)testToDictionary
+{
+    NSArray* input = @[@"James", @"Jim", @"Bob"];
+
+    NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
+        return [item substringToIndex:1];
+    } valueSelector:^id(id item) {
+        return [item lowercaseString];
+    }];
+    
+    NSLog(@"%@", dictionary);
+    
+    // NOTE - two items have the same key, hence the dictionary only has 2 keys
+    STAssertEquals(dictionary.count, 2U, nil);
+    
+    // test the group keys
+    NSArray* keys = [dictionary allKeys];
+    STAssertEqualObjects(@"J", keys[0], nil);
+    STAssertEqualObjects(@"B", keys[1], nil);
+    
+    // test the values
+    STAssertEqualObjects(dictionary[@"J"], @"jim", nil);
+    STAssertEqualObjects(dictionary[@"B"], @"bob", nil);
+}
 @end

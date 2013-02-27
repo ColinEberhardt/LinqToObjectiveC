@@ -149,5 +149,16 @@
     return groupedItems;
 }
 
+- (NSDictionary *)toDictionaryWithKeySelector:(Selector)keySelector valueSelector:(Selector)valueSelector
+{
+    NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
+    for (id item in self) {
+        id key = keySelector(item);
+        id value = valueSelector(item);
+        [result setObject:value forKey:key];
+    }
+    return result;
+}
+
 
 @end
