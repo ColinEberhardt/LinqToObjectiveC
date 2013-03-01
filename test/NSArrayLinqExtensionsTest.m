@@ -290,4 +290,16 @@
     STAssertEqualObjects(result[2], @45, nil);
     STAssertEqualObjects(result[3], @55, nil);
 }
+
+- (void) testReverse
+{
+    NSArray* input = @[@25, @35];
+    
+    NSArray* result = [input reverse];
+    
+    STAssertEquals(result.count, 2U, nil);
+    STAssertEqualObjects(result[0], @35, nil);
+    STAssertEqualObjects(result[1], @25, nil);
+}
+
 @end

@@ -149,4 +149,10 @@ typedef id (^Accumulator)(id item, id aggregate);
  */
 - (NSArray*) concat:(NSArray*)array;
 
+/** Reverses the order of items within this array.
+ 
+ @return The reversed array.
+ */
+- (NSArray*) reverse;
+
 @end

@@ -178,5 +178,14 @@
     return result;
 }
 
+- (NSArray *)reverse
+{
+    NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count];
+    for (id item in [self reverseObjectEnumerator]) {
+        [result addObject:item];
+    }
+    return result;
+}
+
 
 @end

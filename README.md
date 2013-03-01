@@ -45,6 +45,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 - [toDictionary](#toDictionary)
 - [count](#count)
 - [concat](#concat)
+- [reverse](#reverse)
 
 `NSDictionary` methods:
 
@@ -372,7 +373,15 @@ NSUInteger numbersEqualTo25 = [input count:^BOOL(id item) {
 - (NSArray*) concat:(NSArray*)array;
 ```
 
-Concatonates the given array to the end of this array.
+Returns an array which is the result of concatonating the given array to the end of this array.
+
+### <a name="reverse"></a>reverse
+
+```objc
+- (NSArray*) reverse;
+```
+
+Returns an array that has the same elements as the source but in reverse order.
 
 ## NSDictionary methods
 
