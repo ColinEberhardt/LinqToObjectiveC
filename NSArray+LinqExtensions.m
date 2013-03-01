@@ -23,7 +23,7 @@
 
 - (NSArray *)select:(Selector)transform
 {
-    NSMutableArray* result = [[NSMutableArray alloc] init];
+    NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count];
     for(id item in self) {
         [result addObject:transform(item)];
     }
@@ -168,6 +168,14 @@
 - (NSUInteger)count:(Condition)condition
 {
     return [self where:condition].count;
+}
+
+- (NSArray *)concat:(NSArray *)array
+{
+    NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count + array.count];
+    [result addObjectsFromArray:self];
+    [result addObjectsFromArray:array];
+    return result;
 }
 
 

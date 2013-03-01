@@ -142,4 +142,11 @@ typedef id (^Accumulator)(id item, id aggregate);
  */
 - (NSUInteger) count:(Condition)condition;
 
+/** Concatonates the given array to the end of this array.
+ 
+ @param array The array to concatonate.
+ @return The concatonated array.
+ */
+- (NSArray*) concat:(NSArray*)array;
+
 @end

@@ -277,4 +277,17 @@
 
     STAssertEquals(numbersEqualTo25, 2U, nil);
 }
+
+- (void) testConcat
+{
+    NSArray* input = @[@25, @35];
+    
+    NSArray* result = [input concat:@[@45, @55]];
+    
+    STAssertEquals(result.count, 4U, nil);
+    STAssertEqualObjects(result[0], @25, nil);
+    STAssertEqualObjects(result[1], @35, nil);
+    STAssertEqualObjects(result[2], @45, nil);
+    STAssertEqualObjects(result[3], @55, nil);
+}
 @end

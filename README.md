@@ -44,6 +44,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 - [groupBy](#groupBy)
 - [toDictionary](#toDictionary)
 - [count](#count)
+- [concat](#concat)
 
 `NSDictionary` methods:
 
@@ -364,6 +365,14 @@ NSUInteger numbersEqualTo25 = [input count:^BOOL(id item) {
 }];
 // returns 2
 ```
+
+### <a name="concat"></a>concat
+
+```objc
+- (NSArray*) concat:(NSArray*)array;
+```
+
+Concatonates the given array to the end of this array.
 
 ## NSDictionary methods
 
