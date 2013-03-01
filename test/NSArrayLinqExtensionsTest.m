@@ -266,4 +266,15 @@
     STAssertEqualObjects(dictionary[@"J"], @"Jim", nil);
     STAssertEqualObjects(dictionary[@"B"], @"Bob", nil);
 }
+
+- (void) testCount
+{
+    NSArray* input = @[@25, @35, @25];
+
+    NSUInteger numbersEqualTo25 = [input count:^BOOL(id item) {
+        return [item isEqualToNumber:@25];
+    }];
+
+    STAssertEquals(numbersEqualTo25, 2U, nil);
+}
 @end

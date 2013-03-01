@@ -10,7 +10,7 @@
 
 @implementation NSArray (LinqExtensions)
 
-- (NSArray *)where:(Predicate)predicate
+- (NSArray *)where:(Condition)predicate
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
@@ -163,6 +163,11 @@
 - (NSDictionary *)toDictionaryWithKeySelector:(Selector)keySelector
 {
     return [self toDictionaryWithKeySelector:keySelector valueSelector:nil];
+}
+
+- (NSUInteger)count:(Condition)condition
+{
+    return [self where:condition].count;
 }
 
 

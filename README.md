@@ -43,6 +43,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 - [all](#all)
 - [groupBy](#groupBy)
 - [toDictionary](#toDictionary)
+- [count](#count)
 
 `NSDictionary` methods:
 
@@ -70,7 +71,7 @@ interface Person : NSObject
 
 
 ```objc
-- (NSArray*) where:(Predicate)predicate;
+- (NSArray*) where:(Condition)predicate;
 ```
 
 Filters a sequence of values based on a predicate.
@@ -344,6 +345,25 @@ NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
 // )
 ```
 
+### <a name="count"></a>count
+
+```objc
+- (NSUInteger) count:(Condition)condition;
+```
+
+Counts the number of elements in an array that pass a given condition.
+
+As an example, you can check how many numbers equal a certain value:
+
+```objc
+NSArray* input = @[@25, @35, @25];
+
+NSUInteger numbersEqualTo25 = [input count:^BOOL(id item) {
+    return [item isEqualToNumber:@25];
+}];
+// returns 2
+```
+
 ## NSDictionary methods
 
 This section provides a few brief examples of each of the API methods. 
@@ -352,7 +372,7 @@ This section provides a few brief examples of each of the API methods.
 
 
 ```objc
-- (NSDictionary*) where:(KeyValuePredicate)predicate;
+- (NSDictionary*) where:(KeyValueCondition)predicate;
 ```
 
 Filters a dictionary based on a predicate.

@@ -10,7 +10,7 @@
 
 @implementation NSDictionary (LinqExtensions)
 
-- (NSDictionary *)where:(KeyValuePredicate)predicate
+- (NSDictionary *)where:(KeyValueCondition)predicate
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {

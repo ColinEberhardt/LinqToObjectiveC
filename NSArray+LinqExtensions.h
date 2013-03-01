@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef BOOL (^Predicate)(id item);
-
 typedef BOOL (^Condition)(id item);
 
 typedef id (^Selector)(id item);
@@ -26,7 +24,7 @@ typedef id (^Accumulator)(id item, id aggregate);
  @param predicate The function to test each source element for a condition.
  @return An array that contains elements from the input sequence that satisfy the condition.
  */
-- (NSArray*) where:(Predicate)predicate;
+- (NSArray*) where:(Condition)predicate;
 
 /** Projects each element of a sequence into a new form.
  
@@ -136,5 +134,12 @@ typedef id (^Accumulator)(id item, id aggregate);
  @return A dictionary that is the result of applying the supplied selector functions to each item of the array.
  */
 - (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector;
+
+/** Counts the number of elements in the array that satisfy the given condition.
+ 
+ @param condition The condition to test elements against.
+ @return The number of elements that satisfy the condition.
+ */
+- (NSUInteger) count:(Condition)condition;
 
 @end

@@ -10,8 +10,6 @@
 
 typedef id (^KeyValueSelector)(id key, id value);
 
-typedef BOOL (^KeyValuePredicate)(id key, id value);
-
 typedef BOOL (^KeyValueCondition)(id key, id value);
 
 /**
@@ -24,7 +22,7 @@ typedef BOOL (^KeyValueCondition)(id key, id value);
  @param predicate The function to test each source key-value pair for a condition.
  @return A dictionary that contains key-value pairs from the input dictionary that satisfy the condition.
  */
-- (NSDictionary*) where:(KeyValuePredicate)predicate;
+- (NSDictionary*) where:(KeyValueCondition)predicate;
 
 /** Projects each element of the dictionary into a new form.
  
