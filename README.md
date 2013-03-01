@@ -52,6 +52,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 - [toArray](#dictionary-toArray)
 - [any](#dictionary-any)
 - [all](#dictionary-all)
+- [count](#dictionary-count)
 
 
 ## NSArray methods
@@ -469,4 +470,22 @@ BOOL allValuesContainKey = [input all:^BOOL(id key, id value) {
 // returns NO - the value 'bat' does not contain the letter it is keyed with 'c'
 ```
 
+### <a name="dictionary-count"></a>count
 
+```objc
+- (NSUInteger) count:(KeyValueCondition)condition;
+```
+
+Counts the number of key-value pairs that satisfy the given condition.
+
+The following example counts how many dictionary values contain the key:
+
+```objc
+NSDictionary* input = @{@"a" : @"apple", @"b" : @"banana", @"c" : @"bat"};
+
+
+NSUInteger valuesThatContainKey = [input count:^BOOL(id key, id value) {
+    return [value rangeOfString:key].length != 0;
+}];
+// returns 2 - "bat" does not contain the key "c"
+```

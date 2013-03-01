@@ -63,4 +63,9 @@
     return any;
 }
 
+- (NSUInteger)count:(KeyValueCondition)condition
+{
+    return [self where:condition].count;
+}
+
 @end

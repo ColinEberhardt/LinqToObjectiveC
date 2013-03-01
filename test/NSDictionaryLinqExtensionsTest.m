@@ -101,4 +101,17 @@
 }
 
 
+- (void)testCount
+{
+    NSDictionary* input = @{@"a" : @"apple",
+    @"b" : @"banana",
+    @"c" : @"bat"};
+
+
+    NSUInteger valuesThatContainKey = [input count:^BOOL(id key, id value) {
+        return [value rangeOfString:key].length != 0;
+    }];
+    STAssertEquals(valuesThatContainKey, 2U, nil);
+}
+
 @end

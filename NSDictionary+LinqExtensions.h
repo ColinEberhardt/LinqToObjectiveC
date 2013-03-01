@@ -52,4 +52,11 @@ typedef BOOL (^KeyValueCondition)(id key, id value);
  */
 - (BOOL) any:(KeyValueCondition)condition;
 
+/** Counts the number of key-value pairs that satisfy the given condition.
+ 
+ @param condition The condition to test key-value pairs against.
+ @return The number of elements that satisfy the condition.
+ */
+- (NSUInteger) count:(KeyValueCondition)condition;
+
 @end
