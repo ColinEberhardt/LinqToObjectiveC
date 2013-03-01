@@ -39,4 +39,28 @@
     return result;
 }
 
+- (BOOL)all:(KeyValueCondition)condition
+{
+    __block BOOL all = TRUE;
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if (!condition(key, obj)){
+            all = FALSE;
+            *stop = TRUE;
+        }
+    }];
+    return all;
+}
+
+- (BOOL)any:(KeyValueCondition)condition
+{
+    __block BOOL any = FALSE;
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if (condition(key, obj)){
+            any = TRUE;
+            *stop = TRUE;
+        }
+    }];
+    return any;
+}
+
 @end

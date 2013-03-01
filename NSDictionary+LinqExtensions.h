@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id (^KeyValueSelector)(id, id);
+typedef id (^KeyValueSelector)(id key, id value);
 
-typedef BOOL (^KeyValuePredicate)(id, id);
+typedef BOOL (^KeyValuePredicate)(id key, id value);
+
+typedef BOOL (^KeyValueCondition)(id key, id value);
 
 /**
  Various NSDictionary extensions that provide a Linq-style query API
@@ -37,5 +39,19 @@ typedef BOOL (^KeyValuePredicate)(id, id);
  @return An array whose elements are the result of invoking the transform function on each key-value pair of source.
  */
 - (NSArray*) toArray:(KeyValueSelector)selector;
+
+/** Determines whether all of the key-value pairs of the dictionary satisfies a condition.
+ 
+ @param condition The condition to test key-value pairs against.
+ @return Whether any of the element of the dictionary satisfies a condition.
+ */
+- (BOOL) all:(KeyValueCondition)condition;
+
+/** Determines whether any of the key-value pairs of the dictionary satisfies a condition.
+ 
+ @param condition The condition to test key-value pairs against.
+ @return Whether any of the element of the dictionary satisfies a condition.
+ */
+- (BOOL) any:(KeyValueCondition)condition;
 
 @end

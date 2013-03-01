@@ -49,6 +49,8 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 - [where](#dictionary-where)
 - [select](#dictionary-select)
 - [toArray](#dictionary-toArray)
+- [any](#dictionary-any)
+- [all](#dictionary-all)
 
 
 ## NSArray methods
@@ -402,6 +404,49 @@ NSArray* result = [input toArray:^id(id key, id value) {
 //    "B, Banana",
 //    "C, Carrot"
 // )
+```
+
+### <a name="dictionary-any"></a>any
+
+```objc
+- (BOOL) any:(KeyValueCondition)condition;
+```
+
+Tests whether any key-value pair in the dictionary passes the given condition.
+
+As an example, you can check whether value contains the letter 'n':
+
+```objc
+NSDictionary* input = @{@"a" : @"apple", @"b" : @"banana", @"c" : @"bat"};
+
+BOOL anyValuesHaveTheLetterN = [input any:^BOOL(id key, id value) {
+    return [value rangeOfString:@"n"].length != 0;
+}];
+// returns YES
+```
+
+### <a name="dictionary-all"></a>all
+
+```objc
+- (BOOL) all:(KeyValueCondition)condition;
+```
+
+Tests whether all the key-value pairs in the dictionary pass the given condition.
+
+As an example, you can check whether all values contains the letter 'a', or use the key component of the condition to see if each value contains the string key:
+
+```objc
+NSDictionary* input = @{@"a" : @"apple", @"b" : @"banana", @"c" : @"bat"};
+
+BOOL allValuesHaveTheLetterA = [input all:^BOOL(id key, id value) {
+    return [value rangeOfString:@"a"].length != 0;
+}];
+// returns YES
+
+BOOL allValuesContainKey = [input all:^BOOL(id key, id value) {
+    return [value rangeOfString:key].length != 0;
+}];
+// returns NO - the value 'bat' does not contain the letter it is keyed with 'c'
 ```
 
 

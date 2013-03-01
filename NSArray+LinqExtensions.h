@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef BOOL (^Predicate)(id);
+typedef BOOL (^Predicate)(id item);
 
-typedef BOOL (^Condition)(id);
+typedef BOOL (^Condition)(id item);
 
-typedef id (^Selector)(id);
+typedef id (^Selector)(id item);
 
-typedef id (^Accumulator)(id, id);
+typedef id (^Accumulator)(id item, id aggregate);
 
 /**
  Various NSArray extensions that provide a Linq-style query API
@@ -101,17 +101,17 @@ typedef id (^Accumulator)(id, id);
  */
 - (NSArray*) take:(NSUInteger)count;
 
-/** Determines whether all the element of the array satisfies a condition.
+/** Determines whether all the elements of the array satisfies a condition.
  
  @param condition The condition to test elements against.
- @return Whether all the element of the array satisfies a condition.
+ @return Whether all the elements of the array satisfies a condition.
  */
 - (BOOL) all:(Condition)condition;
 
-/** Determines whether any the element of the array satisfies a condition.
+/** Determines whether any of the elements of the array satisfies a condition.
  
  @param condition The condition to test elements against.
- @return Whether any the element of the array satisfies a condition.
+ @return Whether any of the elements of the array satisfies a condition.
  */
 - (BOOL) any:(Condition)condition;
 

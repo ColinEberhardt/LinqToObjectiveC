@@ -66,5 +66,39 @@
     STAssertEqualObjects(result[2], @"C, Carrot", nil);
 }
 
+- (void)testAll
+{
+    NSDictionary* input = @{@"a" : @"apple",
+    @"b" : @"banana",
+    @"c" : @"bat"};
+
+    BOOL allValuesHaveTheLetterA = [input all:^BOOL(id key, id value) {
+        return [value rangeOfString:@"a"].length != 0;
+    }];
+    STAssertTrue(allValuesHaveTheLetterA, nil);
+
+    BOOL allValuesContainKey = [input all:^BOOL(id key, id value) {
+        return [value rangeOfString:key].length != 0;
+    }];
+    STAssertFalse(allValuesContainKey, nil);
+}
+
+- (void)testAny
+{
+    NSDictionary* input = @{@"a" : @"apple",
+    @"b" : @"banana",
+    @"c" : @"bat"};
+
+    BOOL anyValuesHaveTheLetterN = [input any:^BOOL(id key, id value) {
+        return [value rangeOfString:@"n"].length != 0;
+    }];
+    STAssertTrue(anyValuesHaveTheLetterN, nil);
+    
+    BOOL anyKeysHaveTheLetterN = [input any:^BOOL(id key, id value) {
+        return [key rangeOfString:@"n"].length != 0;
+    }];
+    STAssertFalse(anyKeysHaveTheLetterN, nil);
+}
+
 
 @end
