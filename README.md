@@ -168,16 +168,27 @@ A more useful example might use select-many to return all the order-lines for an
 
 ```objc
 - (NSArray*) distinct;
+- - (NSArray*) distinct:(Selector)keySelector;
 ```
 
-Returns distinct elements from a sequence. This simply takes an array of ties, returning an array of the distinct (i.e. unique) values in source order.
+Returns distinct elements from a sequence. This simply takes an array of items, returning an array of the distinct (i.e. unique) values in source order.
 
-Here's an example:
+The no-arg version of this method uses the default method of comparing the given objects. The version that takes a key-selector allows you to specify the value to use for equality for each item.
+
+Here's an example that returns the distinct values from an array of strings:
 
 ```objc
 NSArray* names = @[@"bill", @"bob", @"bob", @"brian", @"bob"];
 NSArray* distinctNames = [names distinct];
 // returns bill, bob and brian
+```
+
+Here's a more complex example that uses the key selector to find people instances with distinct ages:
+
+```objc
+NSArray* peopelWithUniqueAges = [input distinct:^id(id person) {
+    return [person age];
+}];
 ```
 
 ### <a name="aggregate"></a>aggregate

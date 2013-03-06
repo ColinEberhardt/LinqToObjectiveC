@@ -101,6 +101,22 @@
     STAssertEqualObjects(components[2], @"fubar", nil);
 }
 
+
+- (void)testDistinctWithKeySelector
+{
+    NSArray* input = [self createTestData];
+    
+    NSArray* peopelWithUniqueAges = [input distinct:^id(id person) {
+        return [person age];
+    }];
+    
+    STAssertEquals(peopelWithUniqueAges.count, 4U, nil);
+    STAssertEquals([peopelWithUniqueAges[0] name], @"bob", nil);
+    STAssertEquals([peopelWithUniqueAges[1] name], @"frank", nil);
+    STAssertEquals([peopelWithUniqueAges[2] name], @"ian", nil);
+    STAssertEquals([peopelWithUniqueAges[3] name], @"joe", nil);
+}
+
 - (void)testDistinct
 {
     NSArray* names = @[@"bill", @"bob", @"bob", @"brian", @"bob"];

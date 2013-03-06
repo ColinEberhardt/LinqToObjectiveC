@@ -66,6 +66,13 @@ typedef id (^Accumulator)(id item, id aggregate);
  */
 - (NSArray*) distinct;
 
+/** Returns distinct elements from a sequence, where the given selector is used to specify the value to use for equality for each item.
+ 
+ @param keySelector Specifies the value to use for equality for each item.
+ @return An array of distinct elements.
+ */
+- (NSArray*) distinct:(Selector)keySelector;
+
 /** Applies an accumulator function over a sequence.
  
  @param accumulator An accumulator function to be invoked on each element.

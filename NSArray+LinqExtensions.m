@@ -74,6 +74,20 @@
     return distinctSet;
 }
 
+- (NSArray *)distinct:(Selector)keySelector
+{
+    NSMutableSet* keyValues = [[NSMutableSet alloc] init];
+    NSMutableArray* distinctSet = [[NSMutableArray alloc] init];
+    for (id item in self) {
+        id keyForItem = keySelector(item);
+        if (![keyValues containsObject:keyForItem]) {
+            [distinctSet addObject:item];
+            [keyValues addObject:keyForItem];
+        }
+    }
+    return distinctSet;
+}
+
 - (id)aggregate:(Accumulator)accumulator
 {
     id aggregate = nil;
