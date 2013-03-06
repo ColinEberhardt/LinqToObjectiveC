@@ -186,7 +186,7 @@ NSArray* distinctNames = [names distinct];
 Here's a more complex example that uses the key selector to find people instances with distinct ages:
 
 ```objc
-NSArray* peopelWithUniqueAges = [input distinct:^id(id person) {
+NSArray* peopleWithUniqueAges = [input distinct:^id(id person) {
     return [person age];
 }];
 ```
@@ -314,7 +314,7 @@ NSDictionary* groupedByFirstLetter = [input groupBy:^id(id name) {
 // }
 ```
 
-### <a name="toDicionary"></a>toDicionary
+### <a name="toDictionary"></a>toDictionary
 
 ```objc
 - (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector;
