@@ -168,7 +168,7 @@ A more useful example might use select-many to return all the order-lines for an
 
 ```objc
 - (NSArray*) distinct;
-- - (NSArray*) distinct:(Selector)keySelector;
+- (NSArray*) distinct:(Selector)keySelector;
 ```
 
 Returns distinct elements from a sequence. This simply takes an array of items, returning an array of the distinct (i.e. unique) values in source order.
