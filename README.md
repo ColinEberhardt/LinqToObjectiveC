@@ -55,6 +55,7 @@ For a detailed discussion of the history of Linq and why I implemented this API,
 - [any](#dictionary-any)
 - [all](#dictionary-all)
 - [count](#dictionary-count)
+- [merge](#dictionary-merge)
 
 
 ## NSArray methods
@@ -352,7 +353,7 @@ NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
 }];
 
 // result:
-// ()
+// (
 //    F = Frank;
 //    J = Jim;
 //    B = Bob;
@@ -517,4 +518,30 @@ NSUInteger valuesThatContainKey = [input count:^BOOL(id key, id value) {
     return [value rangeOfString:key].length != 0;
 }];
 // returns 2 - "bat" does not contain the key "c"
+```
+
+### <a name="dictionary-merge"></a>merge
+
+```objc
+- (NSDictionary*) merge:(NSDictionary*)dic;
+```
+
+Merges the contents of this dictionary with the given dictionary. For any duplicates, the value from the source dictionary will be used.
+
+
+The following example merges a pair of dictionaries
+
+```objc
+NSDictionary* input = @{@"a" : @"apple", @"b" : @"banana", @"c" : @"cat"};
+
+NSDictionary* result = [input @{@"d" : @"dog", @"e" : @"elephant"}];
+
+// result:
+// (
+//    a = apple;
+//    b = banana;
+//    c = cat;
+//    d = dog;
+//    e = elephant;
+// )
 ```

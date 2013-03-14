@@ -59,4 +59,12 @@ typedef BOOL (^KeyValueCondition)(id key, id value);
  */
 - (NSUInteger) count:(KeyValueCondition)condition;
 
+/** Merges the contents of this dictionary with the given dictionary. For any duplicates, the value from
+ the source dictionary will be used.
+ 
+ @param dic The dictionary to merge with.
+ @return A dictionary which is the result of merging.
+ */
+- (NSDictionary*) merge:(NSDictionary*)dic;
+
 @end

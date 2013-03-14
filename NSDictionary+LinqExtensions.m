@@ -68,4 +68,15 @@
     return [self where:condition].count;
 }
 
+- (NSDictionary *)merge:(NSDictionary *)dictionary
+{
+    NSMutableDictionary* result = [[NSMutableDictionary alloc] initWithDictionary:self];
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if (![result objectForKey:key]) {
+            [result setObject:obj forKey:key];
+        }
+    }];
+    return result;
+}
+
 @end

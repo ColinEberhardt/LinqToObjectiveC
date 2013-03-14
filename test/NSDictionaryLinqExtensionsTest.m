@@ -114,4 +114,25 @@
     STAssertEquals(valuesThatContainKey, 2U, nil);
 }
 
+- (void)testMerge
+{
+    NSDictionary* input = @{@"a" : @"apple",
+    @"b" : @"banana",
+    @"c" : @"bat"};
+    
+    NSDictionary* merge = @{@"d" : @"dog",
+    @"b" : @"box",
+    @"e" : @"egg"};
+    
+    
+    NSDictionary* result = [input merge:merge];
+    
+    STAssertEquals(result.allKeys.count, 4U, nil);
+    STAssertEqualObjects(result[@"a"], @"apple", nil);
+    STAssertEqualObjects(result[@"b"], @"banana", nil);
+    STAssertEqualObjects(result[@"c"], @"bat", nil);
+    STAssertEqualObjects(result[@"d"], @"dog", nil);
+    STAssertEqualObjects(result[@"e"], @"egg", nil);
+}
+
 @end

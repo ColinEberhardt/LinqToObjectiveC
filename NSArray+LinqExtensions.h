@@ -73,7 +73,7 @@ typedef id (^Accumulator)(id item, id aggregate);
  */
 - (NSArray*) distinct:(Selector)keySelector;
 
-/** Applies an accumulator function over a sequence.
+/** Applies an accumulator function over a sequence. The item in the array is used as the initial aggregate value.
  
  @param accumulator An accumulator function to be invoked on each element.
  @return The final accumulator value.
