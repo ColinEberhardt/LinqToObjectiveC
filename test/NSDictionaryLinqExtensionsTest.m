@@ -127,7 +127,7 @@
     
     NSDictionary* result = [input merge:merge];
     
-    STAssertEquals(result.allKeys.count, 4U, nil);
+    STAssertEquals(result.allKeys.count, 5U, nil);
     STAssertEqualObjects(result[@"a"], @"apple", nil);
     STAssertEqualObjects(result[@"b"], @"banana", nil);
     STAssertEqualObjects(result[@"c"], @"bat", nil);
