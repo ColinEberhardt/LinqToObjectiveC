@@ -8,30 +8,30 @@
 
 #import <Foundation/Foundation.h>
 
-typedef BOOL (^Condition)(id item);
+typedef BOOL (^MSLINQCondition)(id item);
 
-typedef id (^Selector)(id item);
+typedef id (^MSLINQSelector)(id item);
 
-typedef id (^Accumulator)(id item, id aggregate);
+typedef id (^MSLINQAccumulator)(id item, id aggregate);
 
 /**
  Various NSArray extensions that provide a Linq-style query API
  */
-@interface NSArray (LinqExtensions)
+@interface NSArray (MSLINQ)
 
 /** Filters a sequence of values based on a predicate.
  
  @param predicate The function to test each source element for a condition.
  @return An array that contains elements from the input sequence that satisfy the condition.
  */
-- (NSArray*) where:(Condition)predicate;
+- (NSArray*) where:(MSLINQCondition)predicate;
 
 /** Projects each element of a sequence into a new form.
  
  @param selector A transform function to apply to each element.
  @return An array whose elements are the result of invoking the transform function on each element of source.
  */
-- (NSArray*) select:(Selector)transform;
+- (NSArray*) select:(MSLINQSelector)transform;
 
 /** Sorts the elements of a sequence in ascending order.
  
@@ -44,7 +44,7 @@ typedef id (^Accumulator)(id item, id aggregate);
  @param keySelector A selector that provides the 'key' which the array should by sorted by. 
  @return An array whose elements are sorted in ascending order.
  */
-- (NSArray*) sort:(Selector)keySelector;
+- (NSArray*) sort:(MSLINQSelector)keySelector;
 
 /** Filters the elements of an an array based on a specified type.
  
@@ -58,7 +58,7 @@ typedef id (^Accumulator)(id item, id aggregate);
  @param transform A transform function to apply to each element, this should return an NSArray.
  @return An array whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.
  */
-- (NSArray*) selectMany:(Selector)transform;
+- (NSArray*) selectMany:(MSLINQSelector)transform;
 
 /** Returns distinct elements from a sequence.
  
@@ -71,14 +71,14 @@ typedef id (^Accumulator)(id item, id aggregate);
  @param keySelector Specifies the value to use for equality for each item.
  @return An array of distinct elements.
  */
-- (NSArray*) distinct:(Selector)keySelector;
+- (NSArray*) distinct:(MSLINQSelector)keySelector;
 
 /** Applies an accumulator function over a sequence. The item in the array is used as the initial aggregate value.
  
  @param accumulator An accumulator function to be invoked on each element.
  @return The final accumulator value.
  */
-- (id) aggregate:(Accumulator)accumulator;
+- (id) aggregate:(MSLINQAccumulator)accumulator;
 
 /** Returns the first item from the source array, or nil if the array is empty.
  
@@ -111,21 +111,21 @@ typedef id (^Accumulator)(id item, id aggregate);
  @param condition The condition to test elements against.
  @return Whether all the elements of the array satisfies a condition.
  */
-- (BOOL) all:(Condition)condition;
+- (BOOL) all:(MSLINQCondition)condition;
 
 /** Determines whether any of the elements of the array satisfies a condition.
  
  @param condition The condition to test elements against.
  @return Whether any of the elements of the array satisfies a condition.
  */
-- (BOOL) any:(Condition)condition;
+- (BOOL) any:(MSLINQCondition)condition;
 
 /** Groups the elements of the array by keys provided by the given key selector. The returned dictionary will contain the keys that are the result of applying the key selector function to each item of the array, and the value for each key is an array of all the items that return the same key value.
  
  @param groupKeySelector Determines the group key for each item in the array
  @return A dictionary that groups the items via the given key selector.
  */
-- (NSDictionary*) groupBy:(Selector)groupKeySelector;
+- (NSDictionary*) groupBy:(MSLINQSelector)groupKeySelector;
 
 /** Transforms the source array into a dictionary by applying the given keySelector and valueSelector to each item in the array.
  
@@ -133,21 +133,21 @@ typedef id (^Accumulator)(id item, id aggregate);
  @param valueSelector A selector function that is applied to each item to determine the value it will have within the returned dictionary.
  @return A dictionary that is the result of applying the supplied selector functions to each item of the array.
  */
-- (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector valueSelector:(Selector)valueSelector;
+- (NSDictionary*) toDictionaryWithKeySelector:(MSLINQSelector)keySelector valueSelector:(MSLINQSelector)valueSelector;
 
 /** Transforms the source array into a dictionary by applying the given keySelectorto each item in the array.
  
  @param keySelector A selector function that is applied to each item to determine the key it will have within the returned dictionary.
  @return A dictionary that is the result of applying the supplied selector functions to each item of the array.
  */
-- (NSDictionary*) toDictionaryWithKeySelector:(Selector)keySelector;
+- (NSDictionary*) toDictionaryWithKeySelector:(MSLINQSelector)keySelector;
 
 /** Counts the number of elements in the array that satisfy the given condition.
  
  @param condition The condition to test elements against.
  @return The number of elements that satisfy the condition.
  */
-- (NSUInteger) count:(Condition)condition;
+- (NSUInteger) count:(MSLINQCondition)condition;
 
 /** Concatonates the given array to the end of this array.
  

@@ -8,9 +8,9 @@
 
 #import "NSArray+LinqExtensions.h"
 
-@implementation NSArray (LinqExtensions)
+@implementation NSArray (MSLINQ)
 
-- (NSArray *)where:(Condition)predicate
+- (NSArray *)where:(MSLINQCondition)predicate
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
@@ -21,16 +21,17 @@
     return result;
 }
 
-- (NSArray *)select:(Selector)transform
+- (NSArray *)select:(MSLINQSelector)transform
 {
     NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count];
     for(id item in self) {
-        [result addObject:transform(item)];
+        id object = transform(item);
+        [result addObject:(object) ? object : [NSNull null]];
     }
     return result;
 }
 
-- (NSArray *)sort:(Selector)keySelector
+- (NSArray *)sort:(MSLINQSelector)keySelector
 {
     return [self sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         id valueOne = keySelector(obj1);
@@ -52,7 +53,7 @@
     }];
 }
 
-- (NSArray *)selectMany:(Selector)transform
+- (NSArray *)selectMany:(MSLINQSelector)transform
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
@@ -74,12 +75,14 @@
     return distinctSet;
 }
 
-- (NSArray *)distinct:(Selector)keySelector
+- (NSArray *)distinct:(MSLINQSelector)keySelector
 {
     NSMutableSet* keyValues = [[NSMutableSet alloc] init];
     NSMutableArray* distinctSet = [[NSMutableArray alloc] init];
     for (id item in self) {
         id keyForItem = keySelector(item);
+        if (!keyForItem)
+            keyForItem = [NSNull null];
         if (![keyValues containsObject:keyForItem]) {
             [distinctSet addObject:item];
             [keyValues addObject:keyForItem];
@@ -88,7 +91,7 @@
     return distinctSet;
 }
 
-- (id)aggregate:(Accumulator)accumulator
+- (id)aggregate:(MSLINQAccumulator)accumulator
 {
     id aggregate = nil;
     for (id item in self) {
@@ -103,12 +106,12 @@
 
 - (id)firstOrNil
 {
-    return self.count == 0 ? nil : self[0];
+    return self.count ? nil : self[0];
 }
 
 - (id)lastOrNil
 {
-    return self.count == 0 ? nil : self[self.count-1];
+    return self.count ? nil : self[self.count-1];
 }
 
 - (NSArray*)skip:(NSUInteger)count
@@ -128,7 +131,7 @@
     return [self subarrayWithRange:range];
 }
 
-- (BOOL)any:(Condition)condition
+- (BOOL)any:(MSLINQCondition)condition
 {
     for (id item in self) {
         if (condition(item)) {
@@ -138,7 +141,7 @@
     return NO;
 }
 
-- (BOOL)all:(Condition)condition
+- (BOOL)all:(MSLINQCondition)condition
 {
     for (id item in self) {
         if (!condition(item)) {
@@ -148,11 +151,13 @@
     return YES;
 }
 
-- (NSDictionary*)groupBy:(Selector)groupKeySelector
+- (NSDictionary*)groupBy:(MSLINQSelector)groupKeySelector
 {
     NSMutableDictionary* groupedItems = [[NSMutableDictionary alloc] init];
     for (id item in self) {
         id key = groupKeySelector(item);
+        if (!key)
+            key = [NSNull null];
         NSMutableArray* arrayForKey;
         if (!(arrayForKey = [groupedItems objectForKey:key])){
             arrayForKey = [[NSMutableArray alloc] init];
@@ -163,23 +168,29 @@
     return groupedItems;
 }
 
-- (NSDictionary *)toDictionaryWithKeySelector:(Selector)keySelector valueSelector:(Selector)valueSelector
+- (NSDictionary *)toDictionaryWithKeySelector:(MSLINQSelector)keySelector valueSelector:(MSLINQSelector)valueSelector
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     for (id item in self) {
         id key = keySelector(item);
         id value = valueSelector!=nil ? valueSelector(item) : item;
+        
+        if (!key)
+            key = [NSNull null];
+        if (!value)
+            value = [NSNull null];
+        
         [result setObject:value forKey:key];
     }
     return result;
 }
 
-- (NSDictionary *)toDictionaryWithKeySelector:(Selector)keySelector
+- (NSDictionary *)toDictionaryWithKeySelector:(MSLINQSelector)keySelector
 {
     return [self toDictionaryWithKeySelector:keySelector valueSelector:nil];
 }
 
-- (NSUInteger)count:(Condition)condition
+- (NSUInteger)count:(MSLINQCondition)condition
 {
     return [self where:condition].count;
 }

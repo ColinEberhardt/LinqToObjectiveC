@@ -8,9 +8,9 @@
 
 #import "NSDictionary+LinqExtensions.h"
 
-@implementation NSDictionary (LinqExtensions)
+@implementation NSDictionary (MSLINQ)
 
-- (NSDictionary *)where:(KeyValueCondition)predicate
+- (NSDictionary *)where:(MSLINQKeyValueCondition)predicate
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -21,25 +21,32 @@
     return result;
 }
 
-- (NSDictionary *)select:(KeyValueSelector)selector
+- (NSDictionary *)select:(MSLINQKeyValueSelector)selector
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [result setObject:selector(key, obj) forKey:key];
+        id object = selector(key, obj);
+        if (!object)
+            object = [NSNull null];
+        
+        [result setObject:object forKey:key];
     }];
     return result;
 }
 
-- (NSArray *)toArray:(KeyValueSelector)selector
+- (NSArray *)toArray:(MSLINQKeyValueSelector)selector
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [result addObject:selector(key, obj)];
+        id object = selector(key, obj);
+        if (!object)
+            object = [NSNull null];
+        [result addObject:object];
     }];
     return result;
 }
 
-- (BOOL)all:(KeyValueCondition)condition
+- (BOOL)all:(MSLINQKeyValueCondition)condition
 {
     __block BOOL all = TRUE;
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -51,7 +58,7 @@
     return all;
 }
 
-- (BOOL)any:(KeyValueCondition)condition
+- (BOOL)any:(MSLINQKeyValueCondition)condition
 {
     __block BOOL any = FALSE;
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -63,7 +70,7 @@
     return any;
 }
 
-- (NSUInteger)count:(KeyValueCondition)condition
+- (NSUInteger)count:(MSLINQKeyValueCondition)condition
 {
     return [self where:condition].count;
 }
