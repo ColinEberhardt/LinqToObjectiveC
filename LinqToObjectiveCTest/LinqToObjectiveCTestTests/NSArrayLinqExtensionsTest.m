@@ -48,6 +48,20 @@
     STAssertEquals(names[4], @"joe", nil);
 }
 
+- (void)testSelectWithNil
+{
+    NSArray* input = [self createTestData];
+    
+    NSArray* names = [input select:^id(id person) {
+        return [[person name] isEqualToString:@"bob"] ? nil : [person name];
+    }];
+    
+    STAssertEquals(names.count, 5U, nil);
+    // 'spot' check a few values
+    STAssertEquals(names[0], [NSNull null], nil);
+    STAssertEquals(names[4], @"joe", nil);
+}
+
 - (void)testSort
 {
     NSArray* input = @[@21, @34, @25];
@@ -66,6 +80,23 @@
     
     NSArray* sortedByName = [input sort:^id(id person) {
         return [person name];
+    }];
+    
+    STAssertEquals(sortedByName.count, 5U, nil);
+    STAssertEquals([sortedByName[0] name], @"bob", nil);
+    STAssertEquals([sortedByName[1] name], @"frank", nil);
+    STAssertEquals([sortedByName[2] name], @"ian", nil);
+    STAssertEquals([sortedByName[3] name], @"jim", nil);
+    STAssertEquals([sortedByName[4] name], @"joe", nil);
+}
+
+- (void)testSortWithKeySelectorWithNil
+{
+    NSArray* input = [self createTestData];
+    
+    NSArray* sortedByName = [input sort:^id(id person) {
+        return [[person name] isEqualToString:@"bob"] ? nil : [person name];
+
     }];
     
     STAssertEquals(sortedByName.count, 5U, nil);
@@ -101,13 +132,27 @@
     STAssertEqualObjects(components[2], @"fubar", nil);
 }
 
-
 - (void)testDistinctWithKeySelector
 {
     NSArray* input = [self createTestData];
     
     NSArray* peopelWithUniqueAges = [input distinct:^id(id person) {
         return [person age];
+    }];
+    
+    STAssertEquals(peopelWithUniqueAges.count, 4U, nil);
+    STAssertEquals([peopelWithUniqueAges[0] name], @"bob", nil);
+    STAssertEquals([peopelWithUniqueAges[1] name], @"frank", nil);
+    STAssertEquals([peopelWithUniqueAges[2] name], @"ian", nil);
+    STAssertEquals([peopelWithUniqueAges[3] name], @"joe", nil);
+}
+
+- (void)testDistinctWithKeySelectorWithNil
+{
+    NSArray* input = [self createTestData];
+    
+    NSArray* peopelWithUniqueAges = [input distinct:^id(id person) {
+        return [[person age] isEqualToNumber:@25] ? nil : [person age];
     }];
     
     STAssertEquals(peopelWithUniqueAges.count, 4U, nil);
@@ -128,6 +173,7 @@
     STAssertEqualObjects(distinctNames[1], @"bob", nil);
     STAssertEqualObjects(distinctNames[2], @"brian", nil);
 }
+
 
 - (void)testAggregate
 {
@@ -238,6 +284,33 @@
     STAssertEqualObjects(@"Bob", groupTwo[0], nil);
 }
 
+- (void)testGroupByWithNil
+{
+    NSArray* input = @[@"James", @"Jim", @"Bob"];
+    
+    NSDictionary* groupedByFirstLetter = [input groupBy:^id(id name) {
+        NSString* firstChar = [name substringToIndex:1];
+        return [firstChar isEqualToString:@"J"] ? nil : firstChar;
+    }];
+    
+    STAssertEquals(groupedByFirstLetter.count, 2U, nil);
+    
+    // test the group keys
+    NSArray* keys = [groupedByFirstLetter allKeys];
+    STAssertEqualObjects([NSNull null], keys[0], nil);
+    STAssertEqualObjects(@"B", keys[1], nil);
+    
+    // test that the correct items are in each group
+    NSArray* groupOne = groupedByFirstLetter[[NSNull null]];
+    STAssertEquals(groupOne.count, 2U, nil);
+    STAssertEqualObjects(@"James", groupOne[0], nil);
+    STAssertEqualObjects(@"Jim", groupOne[1], nil);
+    
+    NSArray* groupTwo = groupedByFirstLetter[@"B"];
+    STAssertEquals(groupTwo.count, 1U, nil);
+    STAssertEqualObjects(@"Bob", groupTwo[0], nil);
+}
+
 - (void)testToDictionaryWithValueSelector
 {
     NSArray* input = @[@"James", @"Jim", @"Bob"];
@@ -263,6 +336,33 @@
     STAssertEqualObjects(dictionary[@"B"], @"bob", nil);
 }
 
+- (void)testToDictionaryWithValueSelectorWithNil
+{
+    NSArray* input = @[@"James", @"Jim", @"Bob"];
+    
+    NSDictionary* dictionary = [input toDictionaryWithKeySelector:^id(id item) {
+        NSString* firstChar = [item substringToIndex:1];
+        return [firstChar isEqualToString:@"J"] ? nil : firstChar;
+    } valueSelector:^id(id item) {
+        NSString* lowercaseName = [item lowercaseString];
+        return [lowercaseName isEqualToString:@"Bob"] ? nil : lowercaseName;
+    }];
+    
+    NSLog(@"%@", dictionary);
+    
+    // NOTE - two items have the same key, hence the dictionary only has 2 keys
+    STAssertEquals(dictionary.count, 2U, nil);
+    
+    // test the group keys
+    NSArray* keys = [dictionary allKeys];
+    STAssertEqualObjects([NSNull null], keys[0], nil);
+    STAssertEqualObjects(@"B", keys[1], nil);
+    
+    // test the values
+    STAssertEqualObjects(dictionary[[NSNull null]], @"jim", nil);
+    STAssertEqualObjects(dictionary[@"B"], [NSNull null], nil);
+}
+
 - (void)testToDictionary
 {
     NSArray* input = @[@"Jim", @"Bob"];
@@ -282,6 +382,8 @@
     STAssertEqualObjects(dictionary[@"J"], @"Jim", nil);
     STAssertEqualObjects(dictionary[@"B"], @"Bob", nil);
 }
+
+
 
 - (void) testCount
 {
