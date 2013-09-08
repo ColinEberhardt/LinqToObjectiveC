@@ -48,6 +48,26 @@
     STAssertEqualObjects(result[@"D"], @"D, F", nil);
 }
 
+- (void)testSelectWithNil
+{
+    NSDictionary* input = @{@"A" : @"Apple",
+    @"B" : @"Banana",
+    @"C" : @"Carrot",
+    @"D" : @"Fish"};
+    
+    
+    NSDictionary* result = [input select:^id(id key, id value) {
+        NSString* projection = [NSString stringWithFormat:@"%@, %@", key, [value substringToIndex:1]];
+        return [projection isEqualToString:@"A, A"] ? nil : projection;
+    }];
+    
+    STAssertEquals(result.allKeys.count, 4U, nil);
+    STAssertEqualObjects(result[@"A"], [NSNull null], nil);
+    STAssertEqualObjects(result[@"B"], @"B, B", nil);
+    STAssertEqualObjects(result[@"C"], @"C, C", nil);
+    STAssertEqualObjects(result[@"D"], @"D, F", nil);
+}
+
 - (void)testToArray
 {
     NSDictionary* input = @{@"A" : @"Apple",
@@ -62,6 +82,25 @@
     
     STAssertEquals(result.count, 3U, nil);
     STAssertEqualObjects(result[0], @"A, Apple", nil);
+    STAssertEqualObjects(result[1], @"B, Banana", nil);
+    STAssertEqualObjects(result[2], @"C, Carrot", nil);
+}
+
+- (void)testToArrayWithNil
+{
+    NSDictionary* input = @{@"A" : @"Apple",
+    @"B" : @"Banana",
+    @"C" : @"Carrot"};
+    
+    NSArray* result = [input toArray:^id(id key, id value) {
+        NSString* projection = [NSString stringWithFormat:@"%@, %@", key, value];
+        return [projection isEqualToString:@"A, Apple"] ? nil : projection;
+    }];
+    
+    NSLog(@"%@", result);
+    
+    STAssertEquals(result.count, 3U, nil);
+    STAssertEqualObjects(result[0], [NSNull null], nil);
     STAssertEqualObjects(result[1], @"B, Banana", nil);
     STAssertEqualObjects(result[2], @"C, Carrot", nil);
 }

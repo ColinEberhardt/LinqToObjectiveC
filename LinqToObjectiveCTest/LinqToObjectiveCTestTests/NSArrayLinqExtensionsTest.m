@@ -297,8 +297,8 @@
     
     // test the group keys
     NSArray* keys = [groupedByFirstLetter allKeys];
-    STAssertEqualObjects([NSNull null], keys[0], nil);
-    STAssertEqualObjects(@"B", keys[1], nil);
+    STAssertEqualObjects([NSNull null], keys[1], nil);
+    STAssertEqualObjects(@"B", keys[0], nil);
     
     // test that the correct items are in each group
     NSArray* groupOne = groupedByFirstLetter[[NSNull null]];
@@ -345,7 +345,7 @@
         return [firstChar isEqualToString:@"J"] ? nil : firstChar;
     } valueSelector:^id(id item) {
         NSString* lowercaseName = [item lowercaseString];
-        return [lowercaseName isEqualToString:@"Bob"] ? nil : lowercaseName;
+        return [lowercaseName isEqualToString:@"bob"] ? nil : lowercaseName;
     }];
     
     NSLog(@"%@", dictionary);
@@ -355,8 +355,8 @@
     
     // test the group keys
     NSArray* keys = [dictionary allKeys];
-    STAssertEqualObjects([NSNull null], keys[0], nil);
-    STAssertEqualObjects(@"B", keys[1], nil);
+    STAssertEqualObjects([NSNull null], keys[1], nil);
+    STAssertEqualObjects(@"B", keys[0], nil);
     
     // test the values
     STAssertEqualObjects(dictionary[[NSNull null]], @"jim", nil);
