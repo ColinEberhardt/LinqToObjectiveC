@@ -2,7 +2,9 @@
 
 Bringing a Linq-style fluent query API to Objective-C.
 
-This project contains a collection of `NSArray` methods that allow you to execute query using a fluent syntax, inspired by Linq. In order to use *Linq to Objective-C* simply copy the `NSArray+LinqExtensions.h`and `NSArray+LinqExtensions.m` files into your project and import the header within any file where you wish to use the API.
+This project contains a collection of `NSArray` and `NSDictionary` methods that allow you to execute queries using a fluent syntax, inspired by [Linq](http://msdn.microsoft.com/en-us/library/vstudio/bb397926.aspx). In order to use *Linq to Objective-C* simply copy the `NSArray+LinqExtensions.h`, `NSArray+LinqExtensions.m`, `NSDictionary+LinqExtensions.h` and `NSDictionary+LinqExtensions.m` files into your project and import the header within any file where you wish to use the API.
+
+Alternatively, you can include these files via [CocoaPods](http://cocoapods.org/).
 
 As an example of the types of query this API makes possible, let's say you have an array of `Person` instances, each with a `surname` property. The following query will create a sorted, comma-separated list of the unique surnames from the array:
 
