@@ -1,0 +1,465 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		72EC7E0E17DC4DA0009AA360 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E0D17DC4DA0009AA360 /* UIKit.framework */; };
+		72EC7E1017DC4DA0009AA360 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E0F17DC4DA0009AA360 /* Foundation.framework */; };
+		72EC7E1217DC4DA0009AA360 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E1117DC4DA0009AA360 /* CoreGraphics.framework */; };
+		72EC7E1817DC4DA0009AA360 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72EC7E1617DC4DA0009AA360 /* InfoPlist.strings */; };
+		72EC7E1A17DC4DA0009AA360 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E1917DC4DA0009AA360 /* main.m */; };
+		72EC7E1E17DC4DA0009AA360 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E1D17DC4DA0009AA360 /* AppDelegate.m */; };
+		72EC7E2C17DC4DA0009AA360 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E2B17DC4DA0009AA360 /* SenTestingKit.framework */; };
+		72EC7E2D17DC4DA0009AA360 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E0D17DC4DA0009AA360 /* UIKit.framework */; };
+		72EC7E2E17DC4DA0009AA360 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E0F17DC4DA0009AA360 /* Foundation.framework */; };
+		72EC7E3617DC4DA0009AA360 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72EC7E3417DC4DA0009AA360 /* InfoPlist.strings */; };
+		72EC7E4617DC4DCB009AA360 /* NSArray+LinqExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E4417DC4DCB009AA360 /* NSArray+LinqExtensions.m */; };
+		72EC7E4717DC4DCB009AA360 /* NSDictionary+LinqExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E4517DC4DCB009AA360 /* NSDictionary+LinqExtensions.m */; };
+		72EC7E6B17DC505D009AA360 /* NSArrayLinqExtensionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E6717DC505D009AA360 /* NSArrayLinqExtensionsTest.m */; };
+		72EC7E6C17DC505D009AA360 /* NSDictionaryLinqExtensionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E6817DC505D009AA360 /* NSDictionaryLinqExtensionsTest.m */; };
+		72EC7E6D17DC505D009AA360 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E6917DC505D009AA360 /* Person.m */; };
+		72EC7E6E17DC505D009AA360 /* ScenarioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC7E6A17DC505D009AA360 /* ScenarioTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		72EC7E2F17DC4DA0009AA360 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72EC7E0017DC4DA0009AA360 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72EC7E0817DC4DA0009AA360;
+			remoteInfo = LinqToObjectiveCTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		72EC7E0917DC4DA0009AA360 /* LinqToObjectiveCTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinqToObjectiveCTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72EC7E0D17DC4DA0009AA360 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		72EC7E0F17DC4DA0009AA360 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		72EC7E1117DC4DA0009AA360 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		72EC7E1517DC4DA0009AA360 /* LinqToObjectiveCTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinqToObjectiveCTest-Info.plist"; sourceTree = "<group>"; };
+		72EC7E1717DC4DA0009AA360 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		72EC7E1917DC4DA0009AA360 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		72EC7E1B17DC4DA0009AA360 /* LinqToObjectiveCTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinqToObjectiveCTest-Prefix.pch"; sourceTree = "<group>"; };
+		72EC7E1C17DC4DA0009AA360 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		72EC7E1D17DC4DA0009AA360 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		72EC7E2A17DC4DA0009AA360 /* LinqToObjectiveCTestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinqToObjectiveCTestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72EC7E2B17DC4DA0009AA360 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		72EC7E3317DC4DA0009AA360 /* LinqToObjectiveCTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinqToObjectiveCTestTests-Info.plist"; sourceTree = "<group>"; };
+		72EC7E3517DC4DA0009AA360 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		72EC7E4217DC4DCB009AA360 /* NSArray+LinqExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+LinqExtensions.h"; path = "../../NSArray+LinqExtensions.h"; sourceTree = "<group>"; };
+		72EC7E4317DC4DCB009AA360 /* NSDictionary+LinqExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+LinqExtensions.h"; path = "../../NSDictionary+LinqExtensions.h"; sourceTree = "<group>"; };
+		72EC7E4417DC4DCB009AA360 /* NSArray+LinqExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+LinqExtensions.m"; path = "../../NSArray+LinqExtensions.m"; sourceTree = "<group>"; };
+		72EC7E4517DC4DCB009AA360 /* NSDictionary+LinqExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+LinqExtensions.m"; path = "../../NSDictionary+LinqExtensions.m"; sourceTree = "<group>"; };
+		72EC7E6317DC505D009AA360 /* NSArrayLinqExtensionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayLinqExtensionsTest.h; sourceTree = "<group>"; };
+		72EC7E6417DC505D009AA360 /* NSDictionaryLinqExtensionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryLinqExtensionsTest.h; sourceTree = "<group>"; };
+		72EC7E6517DC505D009AA360 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		72EC7E6617DC505D009AA360 /* ScenarioTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenarioTests.h; sourceTree = "<group>"; };
+		72EC7E6717DC505D009AA360 /* NSArrayLinqExtensionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayLinqExtensionsTest.m; sourceTree = "<group>"; };
+		72EC7E6817DC505D009AA360 /* NSDictionaryLinqExtensionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryLinqExtensionsTest.m; sourceTree = "<group>"; };
+		72EC7E6917DC505D009AA360 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		72EC7E6A17DC505D009AA360 /* ScenarioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenarioTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		72EC7E0617DC4DA0009AA360 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72EC7E0E17DC4DA0009AA360 /* UIKit.framework in Frameworks */,
+				72EC7E1017DC4DA0009AA360 /* Foundation.framework in Frameworks */,
+				72EC7E1217DC4DA0009AA360 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72EC7E2617DC4DA0009AA360 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72EC7E2C17DC4DA0009AA360 /* SenTestingKit.framework in Frameworks */,
+				72EC7E2D17DC4DA0009AA360 /* UIKit.framework in Frameworks */,
+				72EC7E2E17DC4DA0009AA360 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		72EC7DFE17DC4DA0009AA360 = {
+			isa = PBXGroup;
+			children = (
+				72EC7E1317DC4DA0009AA360 /* LinqToObjectiveCTest */,
+				72EC7E3117DC4DA0009AA360 /* LinqToObjectiveCTestTests */,
+				72EC7E0C17DC4DA0009AA360 /* Frameworks */,
+				72EC7E0A17DC4DA0009AA360 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		72EC7E0A17DC4DA0009AA360 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72EC7E0917DC4DA0009AA360 /* LinqToObjectiveCTest.app */,
+				72EC7E2A17DC4DA0009AA360 /* LinqToObjectiveCTestTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		72EC7E0C17DC4DA0009AA360 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72EC7E0D17DC4DA0009AA360 /* UIKit.framework */,
+				72EC7E0F17DC4DA0009AA360 /* Foundation.framework */,
+				72EC7E1117DC4DA0009AA360 /* CoreGraphics.framework */,
+				72EC7E2B17DC4DA0009AA360 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72EC7E1317DC4DA0009AA360 /* LinqToObjectiveCTest */ = {
+			isa = PBXGroup;
+			children = (
+				72EC7E1C17DC4DA0009AA360 /* AppDelegate.h */,
+				72EC7E1D17DC4DA0009AA360 /* AppDelegate.m */,
+				72EC7E1417DC4DA0009AA360 /* Supporting Files */,
+			);
+			path = LinqToObjectiveCTest;
+			sourceTree = "<group>";
+		};
+		72EC7E1417DC4DA0009AA360 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				72EC7E1517DC4DA0009AA360 /* LinqToObjectiveCTest-Info.plist */,
+				72EC7E1617DC4DA0009AA360 /* InfoPlist.strings */,
+				72EC7E1917DC4DA0009AA360 /* main.m */,
+				72EC7E1B17DC4DA0009AA360 /* LinqToObjectiveCTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		72EC7E3117DC4DA0009AA360 /* LinqToObjectiveCTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				72EC7E6317DC505D009AA360 /* NSArrayLinqExtensionsTest.h */,
+				72EC7E6717DC505D009AA360 /* NSArrayLinqExtensionsTest.m */,
+				72EC7E6417DC505D009AA360 /* NSDictionaryLinqExtensionsTest.h */,
+				72EC7E6817DC505D009AA360 /* NSDictionaryLinqExtensionsTest.m */,
+				72EC7E6517DC505D009AA360 /* Person.h */,
+				72EC7E6917DC505D009AA360 /* Person.m */,
+				72EC7E6617DC505D009AA360 /* ScenarioTests.h */,
+				72EC7E6A17DC505D009AA360 /* ScenarioTests.m */,
+				72EC7E4217DC4DCB009AA360 /* NSArray+LinqExtensions.h */,
+				72EC7E4417DC4DCB009AA360 /* NSArray+LinqExtensions.m */,
+				72EC7E4317DC4DCB009AA360 /* NSDictionary+LinqExtensions.h */,
+				72EC7E4517DC4DCB009AA360 /* NSDictionary+LinqExtensions.m */,
+				72EC7E3217DC4DA0009AA360 /* Supporting Files */,
+			);
+			path = LinqToObjectiveCTestTests;
+			sourceTree = "<group>";
+		};
+		72EC7E3217DC4DA0009AA360 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				72EC7E3317DC4DA0009AA360 /* LinqToObjectiveCTestTests-Info.plist */,
+				72EC7E3417DC4DA0009AA360 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		72EC7E0817DC4DA0009AA360 /* LinqToObjectiveCTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72EC7E3C17DC4DA0009AA360 /* Build configuration list for PBXNativeTarget "LinqToObjectiveCTest" */;
+			buildPhases = (
+				72EC7E0517DC4DA0009AA360 /* Sources */,
+				72EC7E0617DC4DA0009AA360 /* Frameworks */,
+				72EC7E0717DC4DA0009AA360 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LinqToObjectiveCTest;
+			productName = LinqToObjectiveCTest;
+			productReference = 72EC7E0917DC4DA0009AA360 /* LinqToObjectiveCTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		72EC7E2917DC4DA0009AA360 /* LinqToObjectiveCTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72EC7E3F17DC4DA0009AA360 /* Build configuration list for PBXNativeTarget "LinqToObjectiveCTestTests" */;
+			buildPhases = (
+				72EC7E2517DC4DA0009AA360 /* Sources */,
+				72EC7E2617DC4DA0009AA360 /* Frameworks */,
+				72EC7E2717DC4DA0009AA360 /* Resources */,
+				72EC7E2817DC4DA0009AA360 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72EC7E3017DC4DA0009AA360 /* PBXTargetDependency */,
+			);
+			name = LinqToObjectiveCTestTests;
+			productName = LinqToObjectiveCTestTests;
+			productReference = 72EC7E2A17DC4DA0009AA360 /* LinqToObjectiveCTestTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		72EC7E0017DC4DA0009AA360 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Colin Eberhardt";
+			};
+			buildConfigurationList = 72EC7E0317DC4DA0009AA360 /* Build configuration list for PBXProject "LinqToObjectiveCTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 72EC7DFE17DC4DA0009AA360;
+			productRefGroup = 72EC7E0A17DC4DA0009AA360 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				72EC7E0817DC4DA0009AA360 /* LinqToObjectiveCTest */,
+				72EC7E2917DC4DA0009AA360 /* LinqToObjectiveCTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		72EC7E0717DC4DA0009AA360 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72EC7E1817DC4DA0009AA360 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72EC7E2717DC4DA0009AA360 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72EC7E3617DC4DA0009AA360 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		72EC7E2817DC4DA0009AA360 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		72EC7E0517DC4DA0009AA360 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72EC7E1A17DC4DA0009AA360 /* main.m in Sources */,
+				72EC7E1E17DC4DA0009AA360 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72EC7E2517DC4DA0009AA360 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72EC7E4617DC4DCB009AA360 /* NSArray+LinqExtensions.m in Sources */,
+				72EC7E4717DC4DCB009AA360 /* NSDictionary+LinqExtensions.m in Sources */,
+				72EC7E6B17DC505D009AA360 /* NSArrayLinqExtensionsTest.m in Sources */,
+				72EC7E6C17DC505D009AA360 /* NSDictionaryLinqExtensionsTest.m in Sources */,
+				72EC7E6D17DC505D009AA360 /* Person.m in Sources */,
+				72EC7E6E17DC505D009AA360 /* ScenarioTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72EC7E3017DC4DA0009AA360 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72EC7E0817DC4DA0009AA360 /* LinqToObjectiveCTest */;
+			targetProxy = 72EC7E2F17DC4DA0009AA360 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		72EC7E1617DC4DA0009AA360 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72EC7E1717DC4DA0009AA360 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		72EC7E3417DC4DA0009AA360 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72EC7E3517DC4DA0009AA360 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		72EC7E3A17DC4DA0009AA360 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72EC7E3B17DC4DA0009AA360 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		72EC7E3D17DC4DA0009AA360 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LinqToObjectiveCTest/LinqToObjectiveCTest-Prefix.pch";
+				INFOPLIST_FILE = "LinqToObjectiveCTest/LinqToObjectiveCTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		72EC7E3E17DC4DA0009AA360 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LinqToObjectiveCTest/LinqToObjectiveCTest-Prefix.pch";
+				INFOPLIST_FILE = "LinqToObjectiveCTest/LinqToObjectiveCTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		72EC7E4017DC4DA0009AA360 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LinqToObjectiveCTest.app/LinqToObjectiveCTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LinqToObjectiveCTest/LinqToObjectiveCTest-Prefix.pch";
+				INFOPLIST_FILE = "LinqToObjectiveCTestTests/LinqToObjectiveCTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		72EC7E4117DC4DA0009AA360 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LinqToObjectiveCTest.app/LinqToObjectiveCTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LinqToObjectiveCTest/LinqToObjectiveCTest-Prefix.pch";
+				INFOPLIST_FILE = "LinqToObjectiveCTestTests/LinqToObjectiveCTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		72EC7E0317DC4DA0009AA360 /* Build configuration list for PBXProject "LinqToObjectiveCTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72EC7E3A17DC4DA0009AA360 /* Debug */,
+				72EC7E3B17DC4DA0009AA360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72EC7E3C17DC4DA0009AA360 /* Build configuration list for PBXNativeTarget "LinqToObjectiveCTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72EC7E3D17DC4DA0009AA360 /* Debug */,
+				72EC7E3E17DC4DA0009AA360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72EC7E3F17DC4DA0009AA360 /* Build configuration list for PBXNativeTarget "LinqToObjectiveCTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72EC7E4017DC4DA0009AA360 /* Debug */,
+				72EC7E4117DC4DA0009AA360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 72EC7E0017DC4DA0009AA360 /* Project object */;
+}
