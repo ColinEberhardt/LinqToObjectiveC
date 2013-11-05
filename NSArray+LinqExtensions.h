@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+// Selector macros
+// Use the cast variants to explicitly box an non object value.
+#define QESel(__key) (^id(id item){return [item __key];})
+#define QESelCast(__cast, __key) (^id(id item){return @( (__cast) [item __key]);})
+#define QESelInt(__key) QESelCast(NSInteger, __key)
+#define QESelUInt(__key) QESelCast(NSUInteger, __key)
+
+// Key path selection macros.
+// Values obtained via KVC methods are automatically boxed.
+#define QEKeyPath(__keyp) (^id(id item){return [item valueForKeyPath:@#__keyp];})
+#define QEKey(__key) (^id(id item){return [item valueForKey:@#__key];})
+
 typedef BOOL (^MSLINQCondition)(id item);
 
 typedef id (^MSLINQSelector)(id item);
