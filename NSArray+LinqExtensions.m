@@ -106,12 +106,12 @@
 
 - (id)firstOrNil
 {
-    return self.count == 0 ? nil : self[0];
+    return self.count == 0 ? nil : [self objectAtIndex:0];
 }
 
 - (id)lastOrNil
 {
-    return self.count == 0 ? nil : self[self.count-1];
+    return self.count == 0 ? nil : [self objectAtIndex:self.count - 1];
 }
 
 - (NSArray*)skip:(NSUInteger)count
