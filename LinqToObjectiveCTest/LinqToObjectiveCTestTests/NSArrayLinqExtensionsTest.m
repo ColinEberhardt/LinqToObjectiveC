@@ -78,9 +78,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* sortedByName = [input qeSort:^id(id person) {
-        return [person name];
-    }];
+    NSArray* sortedByName = [input qeSort:QEMKey(name)];
     
     STAssertEquals(sortedByName.count, 5U, nil);
     STAssertEquals([sortedByName[0] name], @"bob", nil);
@@ -136,9 +134,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* peopelWithUniqueAges = [input qeDistinct:^id(id person) {
-        return [person age];
-    }];
+    NSArray* peopelWithUniqueAges = [input qeDistinct:QEMKey(age)];
     
     STAssertEquals(peopelWithUniqueAges.count, 4U, nil);
     STAssertEquals([peopelWithUniqueAges[0] name], @"bob", nil);
