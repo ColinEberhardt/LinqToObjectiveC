@@ -10,40 +10,40 @@
 
 // Selector macros
 // Use the cast variants to explicitly box an non object value.
-#define QESel(__key) (^id(id item){return [item __key];})
-#define QESelCast(__cast, __key) (^id(id item){return @( (__cast) [item __key]);})
-#define QESelInt(__key) QESelCast(NSInteger, __key)
-#define QESelUInt(__key) QESelCast(NSUInteger, __key)
+#define QEMSel(__key) (^id(id item){return [item __key];})
+#define QEMSelCast(__cast, __key) (^id(id item){return @( (__cast) [item __key]);})
+#define QEMSelInt(__key) QEMSelCast(NSInteger, __key)
+#define QEMSelUInt(__key) QEMSelCast(NSUInteger, __key)
 
 // Key path selection macros.
 // Values obtained via KVC methods are automatically boxed.
-#define QEKeyPath(__keyp) (^id(id item){return [item valueForKeyPath:@#__keyp];})
-#define QEKey(__key) (^id(id item){return [item valueForKey:@#__key];})
+#define QEMKeyPath(__keyp) (^id(id item){return [item valueForKeyPath:@#__keyp];})
+#define QEMKey(__key) (^id(id item){return [item valueForKey:@#__key];})
 
-typedef BOOL (^MSLINQCondition)(id item);
+typedef BOOL (^QECondition)(id item);
 
-typedef id (^MSLINQSelector)(id item);
+typedef id (^QESelector)(id item);
 
-typedef id (^MSLINQAccumulator)(id item, id aggregate);
+typedef id (^QEAccumulator)(id item, id aggregate);
 
 /**
  Various NSArray extensions that provide a Linq-style query API
  */
-@interface NSArray (MSLINQ)
+@interface NSArray (QueryExtension)
 
 /** Filters a sequence of values based on a predicate.
  
  @param predicate The function to test each source element for a condition.
  @return An array that contains elements from the input sequence that satisfy the condition.
  */
-- (NSArray*) where:(MSLINQCondition)predicate;
+- (NSArray*) where:(QECondition)predicate;
 
 /** Projects each element of a sequence into a new form.
  
  @param selector A transform function to apply to each element.
  @return An array whose elements are the result of invoking the transform function on each element of source.
  */
-- (NSArray*) select:(MSLINQSelector)transform;
+- (NSArray*) select:(QESelector)transform;
 
 /** Sorts the elements of a sequence in ascending order.
  
@@ -56,7 +56,7 @@ typedef id (^MSLINQAccumulator)(id item, id aggregate);
  @param keySelector A selector that provides the 'key' which the array should by sorted by. 
  @return An array whose elements are sorted in ascending order.
  */
-- (NSArray*) sort:(MSLINQSelector)keySelector;
+- (NSArray*) sort:(QESelector)keySelector;
 
 /** Filters the elements of an an array based on a specified type.
  
@@ -70,7 +70,7 @@ typedef id (^MSLINQAccumulator)(id item, id aggregate);
  @param transform A transform function to apply to each element, this should return an NSArray.
  @return An array whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.
  */
-- (NSArray*) selectMany:(MSLINQSelector)transform;
+- (NSArray*) selectMany:(QESelector)transform;
 
 /** Returns distinct elements from a sequence.
  
@@ -83,14 +83,14 @@ typedef id (^MSLINQAccumulator)(id item, id aggregate);
  @param keySelector Specifies the value to use for equality for each item.
  @return An array of distinct elements.
  */
-- (NSArray*) distinct:(MSLINQSelector)keySelector;
+- (NSArray*) distinct:(QESelector)keySelector;
 
 /** Applies an accumulator function over a sequence. The item in the array is used as the initial aggregate value.
  
  @param accumulator An accumulator function to be invoked on each element.
  @return The final accumulator value.
  */
-- (id) aggregate:(MSLINQAccumulator)accumulator;
+- (id) aggregate:(QEAccumulator)accumulator;
 
 /** Returns the first item from the source array, or nil if the array is empty.
  
@@ -123,21 +123,21 @@ typedef id (^MSLINQAccumulator)(id item, id aggregate);
  @param condition The condition to test elements against.
  @return Whether all the elements of the array satisfies a condition.
  */
-- (BOOL) all:(MSLINQCondition)condition;
+- (BOOL) all:(QECondition)condition;
 
 /** Determines whether any of the elements of the array satisfies a condition.
  
  @param condition The condition to test elements against.
  @return Whether any of the elements of the array satisfies a condition.
  */
-- (BOOL) any:(MSLINQCondition)condition;
+- (BOOL) any:(QECondition)condition;
 
 /** Groups the elements of the array by keys provided by the given key selector. The returned dictionary will contain the keys that are the result of applying the key selector function to each item of the array, and the value for each key is an array of all the items that return the same key value.
  
  @param groupKeySelector Determines the group key for each item in the array
  @return A dictionary that groups the items via the given key selector.
  */
-- (NSDictionary*) groupBy:(MSLINQSelector)groupKeySelector;
+- (NSDictionary*) groupBy:(QESelector)groupKeySelector;
 
 /** Transforms the source array into a dictionary by applying the given keySelector and valueSelector to each item in the array.
  
@@ -145,21 +145,21 @@ typedef id (^MSLINQAccumulator)(id item, id aggregate);
  @param valueSelector A selector function that is applied to each item to determine the value it will have within the returned dictionary.
  @return A dictionary that is the result of applying the supplied selector functions to each item of the array.
  */
-- (NSDictionary*) toDictionaryWithKeySelector:(MSLINQSelector)keySelector valueSelector:(MSLINQSelector)valueSelector;
+- (NSDictionary*) toDictionaryWithKeySelector:(QESelector)keySelector valueSelector:(QESelector)valueSelector;
 
 /** Transforms the source array into a dictionary by applying the given keySelectorto each item in the array.
  
  @param keySelector A selector function that is applied to each item to determine the key it will have within the returned dictionary.
  @return A dictionary that is the result of applying the supplied selector functions to each item of the array.
  */
-- (NSDictionary*) toDictionaryWithKeySelector:(MSLINQSelector)keySelector;
+- (NSDictionary*) toDictionaryWithKeySelector:(QESelector)keySelector;
 
 /** Counts the number of elements in the array that satisfy the given condition.
  
  @param condition The condition to test elements against.
  @return The number of elements that satisfy the condition.
  */
-- (NSUInteger) count:(MSLINQCondition)condition;
+- (NSUInteger) count:(QECondition)condition;
 
 /** Concatonates the given array to the end of this array.
  

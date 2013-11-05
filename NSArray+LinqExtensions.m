@@ -8,9 +8,9 @@
 
 #import "NSArray+LinqExtensions.h"
 
-@implementation NSArray (MSLINQ)
+@implementation NSArray (QueryExtension)
 
-- (NSArray *)where:(MSLINQCondition)predicate
+- (NSArray *)where:(QECondition)predicate
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
@@ -21,7 +21,7 @@
     return result;
 }
 
-- (NSArray *)select:(MSLINQSelector)transform
+- (NSArray *)select:(QESelector)transform
 {
     NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count];
     for(id item in self) {
@@ -31,7 +31,7 @@
     return result;
 }
 
-- (NSArray *)sort:(MSLINQSelector)keySelector
+- (NSArray *)sort:(QESelector)keySelector
 {
     return [self sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         id valueOne = keySelector(obj1);
@@ -53,7 +53,7 @@
     }];
 }
 
-- (NSArray *)selectMany:(MSLINQSelector)transform
+- (NSArray *)selectMany:(QESelector)transform
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
@@ -75,7 +75,7 @@
     return distinctSet;
 }
 
-- (NSArray *)distinct:(MSLINQSelector)keySelector
+- (NSArray *)distinct:(QESelector)keySelector
 {
     NSMutableSet* keyValues = [[NSMutableSet alloc] init];
     NSMutableArray* distinctSet = [[NSMutableArray alloc] init];
@@ -91,7 +91,7 @@
     return distinctSet;
 }
 
-- (id)aggregate:(MSLINQAccumulator)accumulator
+- (id)aggregate:(QEAccumulator)accumulator
 {
     id aggregate = nil;
     for (id item in self) {
@@ -131,7 +131,7 @@
     return [self subarrayWithRange:range];
 }
 
-- (BOOL)any:(MSLINQCondition)condition
+- (BOOL)any:(QECondition)condition
 {
     for (id item in self) {
         if (condition(item)) {
@@ -141,7 +141,7 @@
     return NO;
 }
 
-- (BOOL)all:(MSLINQCondition)condition
+- (BOOL)all:(QECondition)condition
 {
     for (id item in self) {
         if (!condition(item)) {
@@ -151,7 +151,7 @@
     return YES;
 }
 
-- (NSDictionary*)groupBy:(MSLINQSelector)groupKeySelector
+- (NSDictionary*)groupBy:(QESelector)groupKeySelector
 {
     NSMutableDictionary* groupedItems = [[NSMutableDictionary alloc] init];
     for (id item in self) {
@@ -168,7 +168,7 @@
     return groupedItems;
 }
 
-- (NSDictionary *)toDictionaryWithKeySelector:(MSLINQSelector)keySelector valueSelector:(MSLINQSelector)valueSelector
+- (NSDictionary *)toDictionaryWithKeySelector:(QESelector)keySelector valueSelector:(QESelector)valueSelector
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     for (id item in self) {
@@ -185,12 +185,12 @@
     return result;
 }
 
-- (NSDictionary *)toDictionaryWithKeySelector:(MSLINQSelector)keySelector
+- (NSDictionary *)toDictionaryWithKeySelector:(QESelector)keySelector
 {
     return [self toDictionaryWithKeySelector:keySelector valueSelector:nil];
 }
 
-- (NSUInteger)count:(MSLINQCondition)condition
+- (NSUInteger)count:(QECondition)condition
 {
     return [self where:condition].count;
 }
