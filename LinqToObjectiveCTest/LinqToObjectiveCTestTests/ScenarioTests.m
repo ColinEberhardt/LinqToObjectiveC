@@ -25,10 +25,10 @@
     @"q" : @"how+many+kittens",
     @"key" : @"1234"};
     
-    id result = [[input toArray:^id(id key, id value) {
+    id result = [[input qeToArray:^id(id key, id value) {
                             return [NSString stringWithFormat:@"%@=%@", key, value];
                         }]
-                        aggregate:^id(id item, id aggregate) {
+                        qeAggregate:^id(id item, id aggregate) {
                             return [NSString stringWithFormat:@"%@&%@", item, aggregate];
                         }];
     
@@ -43,10 +43,10 @@
     [Person personWithName:@"jim" age:@25],
     [Person personWithName:@"joe" age:@55]];
     
-    id result = [[people groupBy:^id(id person) {
+    id result = [[people qeGroupBy:^id(id person) {
                                 return [[[person name] substringToIndex:1] uppercaseString];
                             }]
-                         select:^id(id key, id value) {
+                         qeSelect:^id(id key, id value) {
                                 return [NSNumber numberWithInt:[value count]];
                             }];
     
@@ -68,16 +68,16 @@
     @{@"groupId" : @"3", @"name" : @"daniel"},
     ];
     
-    NSArray* grouped = [[array groupBy:^id(id app) {
+    NSArray* grouped = [[array qeGroupBy:^id(id app) {
         return [app objectForKey:@"groupId"];
-    }] toArray:^id(id key, id value) {
+    }] qeToArray:^id(id key, id value) {
         int __block index = 0;
-        id dic = [[value toDictionaryWithKeySelector:^id(id item) {
+        id dic = [[value qeToDictionaryWithKeySelector:^id(id item) {
                                 return [NSString stringWithFormat:@"name%d", index++ + 1];
                             } valueSelector:^id(id item) {
                                 return [item objectForKey:@"name"];
                             }]
-                         merge: @{@"groupId" : key}];
+                         qeMerge: @{@"groupId" : key}];
         return dic;
     }];
     

@@ -8,9 +8,9 @@
 
 #import "NSDictionary+LinqExtensions.h"
 
-@implementation NSDictionary (MSLINQ)
+@implementation NSDictionary (QueryExtension)
 
-- (NSDictionary *)where:(MSLINQKeyValueCondition)predicate
+- (NSDictionary *)qeWhere:(QEKeyValueCondition)predicate
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -21,7 +21,7 @@
     return result;
 }
 
-- (NSDictionary *)select:(MSLINQKeyValueSelector)selector
+- (NSDictionary *)qeSelect:(QEKeyValueSelector)selector
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -34,7 +34,7 @@
     return result;
 }
 
-- (NSArray *)toArray:(MSLINQKeyValueSelector)selector
+- (NSArray *)qeToArray:(QEKeyValueSelector)selector
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -46,7 +46,7 @@
     return result;
 }
 
-- (BOOL)all:(MSLINQKeyValueCondition)condition
+- (BOOL)qeAll:(QEKeyValueCondition)condition
 {
     __block BOOL all = TRUE;
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -58,7 +58,7 @@
     return all;
 }
 
-- (BOOL)any:(MSLINQKeyValueCondition)condition
+- (BOOL)qeAny:(QEKeyValueCondition)condition
 {
     __block BOOL any = FALSE;
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -70,12 +70,12 @@
     return any;
 }
 
-- (NSUInteger)count:(MSLINQKeyValueCondition)condition
+- (NSUInteger)qeCount:(QEKeyValueCondition)condition
 {
-    return [self where:condition].count;
+    return [self qeWhere:condition].count;
 }
 
-- (NSDictionary *)merge:(NSDictionary *)dictionary
+- (NSDictionary *)qeMerge:(NSDictionary *)dictionary
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] initWithDictionary:self];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
