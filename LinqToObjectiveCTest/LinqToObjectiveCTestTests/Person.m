@@ -18,6 +18,7 @@
     Person* obj = [[Person alloc] init];
     obj.name = name;
     obj.age = age;
+    obj.intAge = [age integerValue];
     return obj;
 }
 

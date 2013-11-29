@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72B9B6761848EA6C0039064C /* MacroTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B6751848EA6C0039064C /* MacroTest.m */; };
 		72EC7E0E17DC4DA0009AA360 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E0D17DC4DA0009AA360 /* UIKit.framework */; };
 		72EC7E1017DC4DA0009AA360 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E0F17DC4DA0009AA360 /* Foundation.framework */; };
 		72EC7E1217DC4DA0009AA360 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC7E1117DC4DA0009AA360 /* CoreGraphics.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		72B9B6741848EA6C0039064C /* MacroTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroTest.h; sourceTree = "<group>"; };
+		72B9B6751848EA6C0039064C /* MacroTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroTest.m; sourceTree = "<group>"; };
 		72EC7E0917DC4DA0009AA360 /* LinqToObjectiveCTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinqToObjectiveCTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72EC7E0D17DC4DA0009AA360 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		72EC7E0F17DC4DA0009AA360 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -142,6 +145,8 @@
 		72EC7E3117DC4DA0009AA360 /* LinqToObjectiveCTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				72B9B6741848EA6C0039064C /* MacroTest.h */,
+				72B9B6751848EA6C0039064C /* MacroTest.m */,
 				72EC7E6317DC505D009AA360 /* NSArrayLinqExtensionsTest.h */,
 				72EC7E6717DC505D009AA360 /* NSArrayLinqExtensionsTest.m */,
 				72EC7E6417DC505D009AA360 /* NSDictionaryLinqExtensionsTest.h */,
@@ -289,6 +294,7 @@
 				72EC7E6C17DC505D009AA360 /* NSDictionaryLinqExtensionsTest.m in Sources */,
 				72EC7E6D17DC505D009AA360 /* Person.m in Sources */,
 				72EC7E6E17DC505D009AA360 /* ScenarioTests.m in Sources */,
+				72B9B6761848EA6C0039064C /* MacroTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
