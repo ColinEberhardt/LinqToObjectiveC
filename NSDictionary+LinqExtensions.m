@@ -10,7 +10,7 @@
 
 @implementation NSDictionary (QueryExtension)
 
-- (NSDictionary *)qeWhere:(QEKeyValueCondition)predicate
+- (NSDictionary *)linq_where:(LINQKeyValueCondition)predicate
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -21,7 +21,7 @@
     return result;
 }
 
-- (NSDictionary *)qeSelect:(QEKeyValueSelector)selector
+- (NSDictionary *)linq_select:(LINQKeyValueSelector)selector
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -34,7 +34,7 @@
     return result;
 }
 
-- (NSArray *)qeToArray:(QEKeyValueSelector)selector
+- (NSArray *)linq_toArray:(LINQKeyValueSelector)selector
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -46,7 +46,7 @@
     return result;
 }
 
-- (BOOL)qeAll:(QEKeyValueCondition)condition
+- (BOOL)linq_all:(LINQKeyValueCondition)condition
 {
     __block BOOL all = TRUE;
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -58,7 +58,7 @@
     return all;
 }
 
-- (BOOL)qeAny:(QEKeyValueCondition)condition
+- (BOOL)linq_any:(LINQKeyValueCondition)condition
 {
     __block BOOL any = FALSE;
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -70,12 +70,12 @@
     return any;
 }
 
-- (NSUInteger)qeCount:(QEKeyValueCondition)condition
+- (NSUInteger)linq_count:(LINQKeyValueCondition)condition
 {
-    return [self qeWhere:condition].count;
+    return [self linq_where:condition].count;
 }
 
-- (NSDictionary *)qeMerge:(NSDictionary *)dictionary
+- (NSDictionary *)linq_Merge:(NSDictionary *)dictionary
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] initWithDictionary:self];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {

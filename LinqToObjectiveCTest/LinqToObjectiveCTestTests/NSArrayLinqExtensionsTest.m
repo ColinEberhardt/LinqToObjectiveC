@@ -25,7 +25,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* peopleWhoAre25 = [input qeWhere:^BOOL(id person) {
+    NSArray* peopleWhoAre25 = [input linq_where:^BOOL(id person) {
         return [[person age] isEqualToNumber:@25];
     }];
     
@@ -38,7 +38,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* names = [input qeSelect:^id(id person) {
+    NSArray* names = [input linq_select:^id(id person) {
         return [person name];
     }];
     
@@ -52,7 +52,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* names = [input qeSelect:^id(id person) {
+    NSArray* names = [input linq_select:^id(id person) {
         return [[person name] isEqualToString:@"bob"] ? nil : [person name];
     }];
     
@@ -66,7 +66,7 @@
 {
     NSArray* input = @[@21, @34, @25];
     
-    NSArray* sortedInput = [input qeSort];
+    NSArray* sortedInput = [input linq_sort];
     
     STAssertEquals(sortedInput.count, 3U, nil);
     STAssertEqualObjects(sortedInput[0], @21, nil);
@@ -78,7 +78,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* sortedByName = [input qeSort:QEMKey(name)];
+    NSArray* sortedByName = [input linq_sort:LINQKey(name)];
     
     STAssertEquals(sortedByName.count, 5U, nil);
     STAssertEquals([sortedByName[0] name], @"bob", nil);
@@ -92,7 +92,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* sortedByName = [input qeSort:^id(id person) {
+    NSArray* sortedByName = [input linq_sort:^id(id person) {
         return [[person name] isEqualToString:@"bob"] ? nil : [person name];
 
     }];
@@ -109,7 +109,7 @@
 {
     NSArray* mixed = @[@"foo", @25, @"bar", @33];
     
-    NSArray* strings = [mixed qeOfType:[NSString class]];
+    NSArray* strings = [mixed linq_ofType:[NSString class]];
     
     STAssertEquals(strings.count, 2U, nil);
     STAssertEqualObjects(strings[0], @"foo", nil);
@@ -120,7 +120,7 @@
 {
     NSArray* data = @[@"foo, bar", @"fubar"];
     
-    NSArray* components = [data qeSelectMany:^id(id string) {
+    NSArray* components = [data linq_selectMany:^id(id string) {
         return [string componentsSeparatedByString:@", "];
     }];
     
@@ -134,7 +134,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* peopelWithUniqueAges = [input qeDistinct:QEMKey(age)];
+    NSArray* peopelWithUniqueAges = [input linq_distinct:LINQKey(age)];
     
     STAssertEquals(peopelWithUniqueAges.count, 4U, nil);
     STAssertEquals([peopelWithUniqueAges[0] name], @"bob", nil);
@@ -147,7 +147,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* peopelWithUniqueAges = [input qeDistinct:^id(id person) {
+    NSArray* peopelWithUniqueAges = [input linq_distinct:^id(id person) {
         return [[person age] isEqualToNumber:@25] ? nil : [person age];
     }];
     
@@ -162,7 +162,7 @@
 {
     NSArray* names = @[@"bill", @"bob", @"bob", @"brian", @"bob"];
     
-    NSArray* distinctNames = [names qeDistinct];
+    NSArray* distinctNames = [names linq_distinct];
     
     STAssertEquals(distinctNames.count, 3U, nil);
     STAssertEqualObjects(distinctNames[0], @"bill", nil);
@@ -175,7 +175,7 @@
 {
     NSArray* names = @[@"bill", @"bob", @"brian"];
     
-    id csv = [names qeAggregate:^id(id item, id aggregate) {
+    id csv = [names linq_aggregate:^id(id item, id aggregate) {
         return [NSString stringWithFormat:@"%@, %@", aggregate, item];
     }];
     
@@ -183,7 +183,7 @@
     
     NSArray* numbers = @[@22, @45, @33];
     
-    id biggestNumber = [numbers qeAggregate:^id(id item, id aggregate) {
+    id biggestNumber = [numbers linq_aggregate:^id(id item, id aggregate) {
         return [item compare:aggregate] == NSOrderedDescending ? item : aggregate;
     }];
     
@@ -195,8 +195,8 @@
     NSArray* input = [self createTestData];
     NSArray* emptyArray = @[];
     
-    STAssertNil([emptyArray qeFirstOrNil], nil);
-    STAssertEquals([[input qeFirstOrNil] name], @"bob", nil);
+    STAssertNil([emptyArray linq_firstOrNil], nil);
+    STAssertEquals([[input linq_firstOrNil] name], @"bob", nil);
 }
 
 - (void)testLastOrNil
@@ -204,27 +204,27 @@
     NSArray* input = [self createTestData];
     NSArray* emptyArray = @[];
     
-    STAssertNil([emptyArray qeLastOrNil], nil);
-    STAssertEquals([[input qeLastOrNil] name], @"joe", nil);
+    STAssertNil([emptyArray linq_lastOrNil], nil);
+    STAssertEquals([[input linq_lastOrNil] name], @"joe", nil);
 }
 
 - (void)testTake
 {
     NSArray* input = [self createTestData];
     
-    STAssertEquals([input qeTake:0].count, 0U, nil);
-    STAssertEquals([input qeTake:5].count, 5U, nil);
-    STAssertEquals([input qeTake:50].count, 5U, nil);
-    STAssertEquals([[input qeTake:2][0] name], @"bob", nil);
+    STAssertEquals([input linq_take:0].count, 0U, nil);
+    STAssertEquals([input linq_take:5].count, 5U, nil);
+    STAssertEquals([input linq_take:50].count, 5U, nil);
+    STAssertEquals([[input linq_take:2][0] name], @"bob", nil);
 }
 
 - (void)testSkip
 {
     NSArray* input = [self createTestData];
     
-    STAssertEquals([input qeSkip:0].count, 5U, nil);
-    STAssertEquals([input qeSkip:5].count, 0U, nil);
-    STAssertEquals([[input qeSkip:2][0] name], @"ian", nil);
+    STAssertEquals([input linq_skip:0].count, 5U, nil);
+    STAssertEquals([input linq_skip:5].count, 0U, nil);
+    STAssertEquals([[input linq_skip:2][0] name], @"ian", nil);
 }
 
 
@@ -232,11 +232,11 @@
 {
     NSArray* input = @[@25, @44, @36];
     
-    STAssertFalse([input qeAny:^BOOL(id item) {
+    STAssertFalse([input linq_any:^BOOL(id item) {
         return [item isEqualToNumber:@33];
     }], nil);
     
-    STAssertTrue([input qeAny:^BOOL(id item) {
+    STAssertTrue([input linq_any:^BOOL(id item) {
         return [item isEqualToNumber:@25];
     }], nil);
 }
@@ -245,11 +245,11 @@
 {
     NSArray* input = @[@25, @25, @25];
     
-    STAssertFalse([input qeAll:^BOOL(id item) {
+    STAssertFalse([input linq_all:^BOOL(id item) {
         return [item isEqualToNumber:@33];
     }], nil);
     
-    STAssertTrue([input qeAll:^BOOL(id item) {
+    STAssertTrue([input linq_all:^BOOL(id item) {
         return [item isEqualToNumber:@25];
     }], nil);
 }
@@ -258,7 +258,7 @@
 {
     NSArray* input = @[@"James", @"Jim", @"Bob"];
     
-    NSDictionary* groupedByFirstLetter = [input qeGroupBy:^id(id name) {
+    NSDictionary* groupedByFirstLetter = [input linq_groupBy:^id(id name) {
         return [name substringToIndex:1];
     }];
     
@@ -284,7 +284,7 @@
 {
     NSArray* input = @[@"James", @"Jim", @"Bob"];
     
-    NSDictionary* groupedByFirstLetter = [input qeGroupBy:^id(id name) {
+    NSDictionary* groupedByFirstLetter = [input linq_groupBy:^id(id name) {
         NSString* firstChar = [name substringToIndex:1];
         return [firstChar isEqualToString:@"J"] ? nil : firstChar;
     }];
@@ -311,7 +311,7 @@
 {
     NSArray* input = @[@"James", @"Jim", @"Bob"];
 
-    NSDictionary* dictionary = [input qeToDictionaryWithKeySelector:^id(id item) {
+    NSDictionary* dictionary = [input linq_toDictionaryWithKeySelector:^id(id item) {
         return [item substringToIndex:1];
     } valueSelector:^id(id item) {
         return [item lowercaseString];
@@ -336,7 +336,7 @@
 {
     NSArray* input = @[@"James", @"Jim", @"Bob"];
     
-    NSDictionary* dictionary = [input qeToDictionaryWithKeySelector:^id(id item) {
+    NSDictionary* dictionary = [input linq_toDictionaryWithKeySelector:^id(id item) {
         NSString* firstChar = [item substringToIndex:1];
         return [firstChar isEqualToString:@"J"] ? nil : firstChar;
     } valueSelector:^id(id item) {
@@ -363,7 +363,7 @@
 {
     NSArray* input = @[@"Jim", @"Bob"];
     
-    NSDictionary* dictionary = [input qeToDictionaryWithKeySelector:^id(id item) {
+    NSDictionary* dictionary = [input linq_toDictionaryWithKeySelector:^id(id item) {
         return [item substringToIndex:1];
     }];
     
@@ -385,7 +385,7 @@
 {
     NSArray* input = @[@25, @35, @25];
 
-    NSUInteger numbersEqualTo25 = [input qeCount:^BOOL(id item) {
+    NSUInteger numbersEqualTo25 = [input linq_count:^BOOL(id item) {
         return [item isEqualToNumber:@25];
     }];
 
@@ -396,7 +396,7 @@
 {
     NSArray* input = @[@25, @35];
     
-    NSArray* result = [input qeConcat:@[@45, @55]];
+    NSArray* result = [input linq_concat:@[@45, @55]];
     
     STAssertEquals(result.count, 4U, nil);
     STAssertEqualObjects(result[0], @25, nil);
@@ -409,7 +409,7 @@
 {
     NSArray* input = @[@25, @35];
     
-    NSArray* result = [input qeReverse];
+    NSArray* result = [input linq_reverse];
     
     STAssertEquals(result.count, 2U, nil);
     STAssertEqualObjects(result[0], @35, nil);

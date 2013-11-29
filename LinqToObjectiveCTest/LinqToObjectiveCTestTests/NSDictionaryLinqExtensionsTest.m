@@ -19,7 +19,7 @@
     @"D" : @"Fish"};
     
     
-    NSDictionary* result = [input qeWhere:^BOOL(id key, id value) {
+    NSDictionary* result = [input linq_where:^BOOL(id key, id value) {
         return [key isEqual:[value substringToIndex:1]];
     }];
     
@@ -37,7 +37,7 @@
                     @"D" : @"Fish"};
     
     
-    NSDictionary* result = [input qeSelect:^id(id key, id value) {
+    NSDictionary* result = [input linq_select:^id(id key, id value) {
         return [NSString stringWithFormat:@"%@, %@", key, [value substringToIndex:1]];
     }];
     
@@ -56,7 +56,7 @@
     @"D" : @"Fish"};
     
     
-    NSDictionary* result = [input qeSelect:^id(id key, id value) {
+    NSDictionary* result = [input linq_select:^id(id key, id value) {
         NSString* projection = [NSString stringWithFormat:@"%@, %@", key, [value substringToIndex:1]];
         return [projection isEqualToString:@"A, A"] ? nil : projection;
     }];
@@ -74,7 +74,7 @@
     @"B" : @"Banana",
     @"C" : @"Carrot"};
 
-    NSArray* result = [input qeToArray:^id(id key, id value) {
+    NSArray* result = [input linq_toArray:^id(id key, id value) {
         return [NSString stringWithFormat:@"%@, %@", key, value];
     }];
     
@@ -92,7 +92,7 @@
     @"B" : @"Banana",
     @"C" : @"Carrot"};
     
-    NSArray* result = [input qeToArray:^id(id key, id value) {
+    NSArray* result = [input linq_toArray:^id(id key, id value) {
         NSString* projection = [NSString stringWithFormat:@"%@, %@", key, value];
         return [projection isEqualToString:@"A, Apple"] ? nil : projection;
     }];
@@ -111,12 +111,12 @@
     @"b" : @"banana",
     @"c" : @"bat"};
 
-    BOOL allValuesHaveTheLetterA = [input qeAll:^BOOL(id key, id value) {
+    BOOL allValuesHaveTheLetterA = [input linq_all:^BOOL(id key, id value) {
         return [value rangeOfString:@"a"].length != 0;
     }];
     STAssertTrue(allValuesHaveTheLetterA, nil);
 
-    BOOL allValuesContainKey = [input qeAll:^BOOL(id key, id value) {
+    BOOL allValuesContainKey = [input linq_all:^BOOL(id key, id value) {
         return [value rangeOfString:key].length != 0;
     }];
     STAssertFalse(allValuesContainKey, nil);
@@ -128,12 +128,12 @@
     @"b" : @"banana",
     @"c" : @"bat"};
 
-    BOOL anyValuesHaveTheLetterN = [input qeAny:^BOOL(id key, id value) {
+    BOOL anyValuesHaveTheLetterN = [input linq_any:^BOOL(id key, id value) {
         return [value rangeOfString:@"n"].length != 0;
     }];
     STAssertTrue(anyValuesHaveTheLetterN, nil);
     
-    BOOL anyKeysHaveTheLetterN = [input qeAny:^BOOL(id key, id value) {
+    BOOL anyKeysHaveTheLetterN = [input linq_any:^BOOL(id key, id value) {
         return [key rangeOfString:@"n"].length != 0;
     }];
     STAssertFalse(anyKeysHaveTheLetterN, nil);
@@ -147,7 +147,7 @@
     @"c" : @"bat"};
 
 
-    NSUInteger valuesThatContainKey = [input qeCount:^BOOL(id key, id value) {
+    NSUInteger valuesThatContainKey = [input linq_count:^BOOL(id key, id value) {
         return [value rangeOfString:key].length != 0;
     }];
     STAssertEquals(valuesThatContainKey, 2U, nil);
@@ -164,7 +164,7 @@
     @"e" : @"egg"};
     
     
-    NSDictionary* result = [input qeMerge:merge];
+    NSDictionary* result = [input linq_Merge:merge];
     
     STAssertEquals(result.allKeys.count, 5U, nil);
     STAssertEqualObjects(result[@"a"], @"apple", nil);

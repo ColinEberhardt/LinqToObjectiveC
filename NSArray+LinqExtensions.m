@@ -10,7 +10,7 @@
 
 @implementation NSArray (QueryExtension)
 
-- (NSArray *)qeWhere:(QECondition)predicate
+- (NSArray *)linq_where:(LINQCondition)predicate
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
@@ -21,7 +21,7 @@
     return result;
 }
 
-- (NSArray *)qeSelect:(QESelector)transform
+- (NSArray *)linq_select:(LINQSelector)transform
 {
     NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count];
     for(id item in self) {
@@ -31,7 +31,7 @@
     return result;
 }
 
-- (NSArray *)qeSort:(QESelector)keySelector
+- (NSArray *)linq_sort:(LINQSelector)keySelector
 {
     return [self sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         id valueOne = keySelector(obj1);
@@ -41,19 +41,19 @@
     }];
 }
 
-- (NSArray *)qeSort
+- (NSArray *)linq_sort
 {
-    return [self qeSort:^id(id item) { return item;} ];
+    return [self linq_sort:^id(id item) { return item;} ];
 }
 
-- (NSArray *)qeOfType:(Class)type
+- (NSArray *)linq_ofType:(Class)type
 {
-    return [self qeWhere:^BOOL(id item) {
+    return [self linq_where:^BOOL(id item) {
         return [[item class] isSubclassOfClass:type];
     }];
 }
 
-- (NSArray *)qeSelectMany:(QESelector)transform
+- (NSArray *)linq_selectMany:(LINQSelector)transform
 {
     NSMutableArray* result = [[NSMutableArray alloc] init];
     for(id item in self) {
@@ -64,7 +64,7 @@
     return result;
 }
 
-- (NSArray *)qeDistinct
+- (NSArray *)linq_distinct
 {
     NSMutableArray* distinctSet = [[NSMutableArray alloc] init];
     for (id item in self) {
@@ -75,7 +75,7 @@
     return distinctSet;
 }
 
-- (NSArray *)qeDistinct:(QESelector)keySelector
+- (NSArray *)linq_distinct:(LINQSelector)keySelector
 {
     NSMutableSet* keyValues = [[NSMutableSet alloc] init];
     NSMutableArray* distinctSet = [[NSMutableArray alloc] init];
@@ -91,7 +91,7 @@
     return distinctSet;
 }
 
-- (id)qeAggregate:(QEAccumulator)accumulator
+- (id)linq_aggregate:(LINQAccumulator)accumulator
 {
     id aggregate = nil;
     for (id item in self) {
@@ -104,17 +104,17 @@
     return aggregate;
 }
 
-- (id)qeFirstOrNil
+- (id)linq_firstOrNil
 {
     return self.count == 0 ? nil : [self objectAtIndex:0];
 }
 
-- (id)qeLastOrNil
+- (id)linq_lastOrNil
 {
     return self.count == 0 ? nil : [self objectAtIndex:self.count - 1];
 }
 
-- (NSArray*)qeSkip:(NSUInteger)count
+- (NSArray*)linq_skip:(NSUInteger)count
 {
     if (count < self.count) {
         NSRange range = {.location = count, .length = self.count - count};
@@ -124,14 +124,14 @@
     }
 }
 
-- (NSArray*)qeTake:(NSUInteger)count
+- (NSArray*)linq_take:(NSUInteger)count
 {
     NSRange range = { .location=0,
         .length = count > self.count ? self.count : count};
     return [self subarrayWithRange:range];
 }
 
-- (BOOL)qeAny:(QECondition)condition
+- (BOOL)linq_any:(LINQCondition)condition
 {
     for (id item in self) {
         if (condition(item)) {
@@ -141,7 +141,7 @@
     return NO;
 }
 
-- (BOOL)qeAll:(QECondition)condition
+- (BOOL)linq_all:(LINQCondition)condition
 {
     for (id item in self) {
         if (!condition(item)) {
@@ -151,7 +151,7 @@
     return YES;
 }
 
-- (NSDictionary*)qeGroupBy:(QESelector)groupKeySelector
+- (NSDictionary*)linq_groupBy:(LINQSelector)groupKeySelector
 {
     NSMutableDictionary* groupedItems = [[NSMutableDictionary alloc] init];
     for (id item in self) {
@@ -168,7 +168,7 @@
     return groupedItems;
 }
 
-- (NSDictionary *)qeToDictionaryWithKeySelector:(QESelector)keySelector valueSelector:(QESelector)valueSelector
+- (NSDictionary *)linq_toDictionaryWithKeySelector:(LINQSelector)keySelector valueSelector:(LINQSelector)valueSelector
 {
     NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
     for (id item in self) {
@@ -185,17 +185,17 @@
     return result;
 }
 
-- (NSDictionary *)qeToDictionaryWithKeySelector:(QESelector)keySelector
+- (NSDictionary *)linq_toDictionaryWithKeySelector:(LINQSelector)keySelector
 {
-    return [self qeToDictionaryWithKeySelector:keySelector valueSelector:nil];
+    return [self linq_toDictionaryWithKeySelector:keySelector valueSelector:nil];
 }
 
-- (NSUInteger)qeCount:(QECondition)condition
+- (NSUInteger)linq_count:(LINQCondition)condition
 {
-    return [self qeWhere:condition].count;
+    return [self linq_where:condition].count;
 }
 
-- (NSArray *)qeConcat:(NSArray *)array
+- (NSArray *)linq_concat:(NSArray *)array
 {
     NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count + array.count];
     [result addObjectsFromArray:self];
@@ -203,7 +203,7 @@
     return result;
 }
 
-- (NSArray *)qeReverse
+- (NSArray *)linq_reverse
 {
     NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count];
     for (id item in [self reverseObjectEnumerator]) {

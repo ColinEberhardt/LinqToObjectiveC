@@ -25,7 +25,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* names = [input qeSelect:QEMSel(name)];
+    NSArray* names = [input linq_select:LINQSel(name)];
     
     STAssertEquals(names.count, 5U, nil);
     // 'spot' check a few values
@@ -37,7 +37,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* ages = [input qeSelect:QEMSelUInt(intAge)];
+    NSArray* ages = [input linq_select:LINQSelUInt(intAge)];
     
     STAssertEquals(ages.count, 5U, nil);
     // 'spot' check a few values
@@ -49,7 +49,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* names = [input qeSelect:QEMKey(name)];
+    NSArray* names = [input linq_select:LINQKey(name)];
     
     STAssertEquals(names.count, 5U, nil);
     // 'spot' check a few values
@@ -61,7 +61,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* names = [input qeSelect:QEMKeyPath(name)];
+    NSArray* names = [input linq_select:LINQKeyPath(name)];
     
     STAssertEquals(names.count, 5U, nil);
     // 'spot' check a few values

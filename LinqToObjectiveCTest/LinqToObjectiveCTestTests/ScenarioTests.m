@@ -25,10 +25,10 @@
     @"q" : @"how+many+kittens",
     @"key" : @"1234"};
     
-    id result = [[input qeToArray:^id(id key, id value) {
+    id result = [[input linq_toArray:^id(id key, id value) {
                             return [NSString stringWithFormat:@"%@=%@", key, value];
                         }]
-                        qeAggregate:^id(id item, id aggregate) {
+                        linq_aggregate:^id(id item, id aggregate) {
                             return [NSString stringWithFormat:@"%@&%@", item, aggregate];
                         }];
     
@@ -43,10 +43,10 @@
     [Person personWithName:@"jim" age:@25],
     [Person personWithName:@"joe" age:@55]];
     
-    id result = [[people qeGroupBy:^id(id person) {
+    id result = [[people linq_groupBy:^id(id person) {
                                 return [[[person name] substringToIndex:1] uppercaseString];
                             }]
-                         qeSelect:^id(id key, id value) {
+                         linq_select:^id(id key, id value) {
                                 return [NSNumber numberWithInt:[value count]];
                             }];
     
@@ -68,16 +68,16 @@
     @{@"groupId" : @"3", @"name" : @"daniel"},
     ];
     
-    NSArray* grouped = [[array qeGroupBy:^id(id app) {
+    NSArray* grouped = [[array linq_groupBy:^id(id app) {
         return [app objectForKey:@"groupId"];
-    }] qeToArray:^id(id key, id value) {
+    }] linq_toArray:^id(id key, id value) {
         int __block index = 0;
-        id dic = [[value qeToDictionaryWithKeySelector:^id(id item) {
+        id dic = [[value linq_toDictionaryWithKeySelector:^id(id item) {
                                 return [NSString stringWithFormat:@"name%d", index++ + 1];
                             } valueSelector:^id(id item) {
                                 return [item objectForKey:@"name"];
                             }]
-                         qeMerge: @{@"groupId" : key}];
+                         linq_Merge: @{@"groupId" : key}];
         return dic;
     }];
     
