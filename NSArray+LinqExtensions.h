@@ -58,6 +58,19 @@ typedef id (^LINQAccumulator)(id item, id aggregate);
  */
 - (NSArray*) linq_sort:(LINQSelector)keySelector;
 
+/** Sorts the elements of a sequence in descending order.
+ 
+ @return An array whose elements are sorted in descending order.
+ */
+- (NSArray *)linq_sort_descending;
+
+/** Sorts the elements of a sequence in descending order by using a specified keySelector.
+ 
+ @param keySelector A selector that provides the 'key' which the array should by sorted by.
+ @return An array whose elements are sorted in descending order.
+ */
+- (NSArray *)linq_sort_descending:(LINQSelector)keySelector;
+
 /** Filters the elements of an an array based on a specified type.
  
  @param type The type to filter the elements of the sequence on.

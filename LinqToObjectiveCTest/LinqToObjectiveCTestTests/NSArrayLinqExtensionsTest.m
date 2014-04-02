@@ -105,6 +105,49 @@
     STAssertEquals([sortedByName[4] name], @"joe", nil);
 }
 
+- (void)testSortDescending
+{
+    NSArray* input = @[@21, @34, @25];
+    
+    NSArray* sortedDescendingInput = [input linq_sort_descending];
+    
+    STAssertEquals(sortedDescendingInput.count, 3U, nil);
+    STAssertEqualObjects(sortedDescendingInput[0], @34, nil);
+    STAssertEqualObjects(sortedDescendingInput[1], @25, nil);
+    STAssertEqualObjects(sortedDescendingInput[2], @21, nil);
+}
+
+- (void)testSortDescendingWithKeySelector
+{
+    NSArray* input = [self createTestData];
+    
+    NSArray* sortedDescendingByName = [input linq_sort_descending:LINQKey(name)];
+    
+    STAssertEquals(sortedDescendingByName.count, 5U, nil);
+    STAssertEquals([sortedDescendingByName[0] name], @"joe", nil);
+    STAssertEquals([sortedDescendingByName[1] name], @"jim", nil);
+    STAssertEquals([sortedDescendingByName[2] name], @"ian", nil);
+    STAssertEquals([sortedDescendingByName[3] name], @"frank", nil);
+    STAssertEquals([sortedDescendingByName[4] name], @"bob", nil);
+}
+
+- (void)testSortDescendingWithKeySelectorWithNil
+{
+    NSArray* input = [self createTestData];
+    
+    NSArray* sortedDescendingByName = [input linq_sort_descending:^id(id person) {
+        return [[person name] isEqualToString:@"bob"] ? nil : [person name];
+        
+    }];
+    
+    STAssertEquals(sortedDescendingByName.count, 5U, nil);
+    STAssertEquals([sortedDescendingByName[0] name], @"joe", nil);
+    STAssertEquals([sortedDescendingByName[1] name], @"jim", nil);
+    STAssertEquals([sortedDescendingByName[2] name], @"ian", nil);
+    STAssertEquals([sortedDescendingByName[3] name], @"frank", nil);
+    STAssertEquals([sortedDescendingByName[4] name], @"bob", nil);
+}
+
 - (void)testOfType
 {
     NSArray* mixed = @[@"foo", @25, @"bar", @33];

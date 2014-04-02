@@ -46,6 +46,21 @@
     return [self linq_sort:^id(id item) { return item;} ];
 }
 
+- (NSArray *)linq_sort_descending:(LINQSelector)keySelector
+{
+    return [self sortedArrayUsingComparator:^NSComparisonResult(id obj2, id obj1) {
+        id valueOne = keySelector(obj1);
+        id valueTwo = keySelector(obj2);
+        NSComparisonResult result = [valueOne compare:valueTwo];
+        return result;
+    }];
+}
+
+- (NSArray *)linq_sort_descending
+{
+    return [self linq_sort_descending:^id(id item) { return item;} ];
+}
+
 - (NSArray *)linq_ofType:(Class)type
 {
     return [self linq_where:^BOOL(id item) {
