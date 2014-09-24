@@ -124,6 +124,16 @@
     return self.count == 0 ? nil : [self objectAtIndex:0];
 }
 
+- (id)linq_firstOrNil:(LINQCondition)predicate
+{
+    for(id item in self) {
+        if (predicate(item)) {
+            return item;
+        }
+    }
+    return nil;
+}
+
 - (id)linq_lastOrNil
 {
     return self.count == 0 ? nil : [self objectAtIndex:self.count - 1];

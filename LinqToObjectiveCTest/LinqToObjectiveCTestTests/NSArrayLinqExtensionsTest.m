@@ -242,6 +242,25 @@
     STAssertEquals([[input linq_firstOrNil] name], @"bob", nil);
 }
 
+- (void)testFirtOrNilWithPredicate
+{
+    Person* jimSecond = [Person personWithName:@"jim" age:@22];
+    NSMutableArray* input = [NSMutableArray arrayWithArray:[self createTestData]];
+    [input addObject:jimSecond];
+    
+    id personJim = [input linq_firstOrNil:^BOOL(Person* person) {
+        return [person.name isEqualToString:@"jim"] && [person.age isEqualToNumber:@22];
+    }];
+    
+    id personSteve = [input linq_firstOrNil:^BOOL(Person* person) {
+        return [person.name isEqualToString:@"steve"];
+    }];
+    
+    STAssertEquals(personJim, jimSecond, @"Returned the wrong Jim!");
+    STAssertNil(personSteve, @"Should not have found Steve!");
+    STAssertTrue([personJim isKindOfClass:Person.class], @"Should have returned a single object of type Person");
+}
+
 - (void)testLastOrNil
 {
     NSArray* input = [self createTestData];

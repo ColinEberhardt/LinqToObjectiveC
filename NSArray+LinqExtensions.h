@@ -111,6 +111,13 @@ typedef id (^LINQAccumulator)(id item, id aggregate);
  */
 - (id) linq_firstOrNil;
 
+/** Returns the first item from the source array matching a predicate, or nil if there are no objects passing the test.
+ 
+ @param predicate The function to test each source element for a condition.
+ @return An item from the input sequence that satisfy the condition.
+ */
+- (id)linq_firstOrNil:(LINQCondition)predicate;
+
 /** Returns the last item from the source array, or nil if the array is empty.
  
  @return The last item from the source array, or nil if the array is empty.
