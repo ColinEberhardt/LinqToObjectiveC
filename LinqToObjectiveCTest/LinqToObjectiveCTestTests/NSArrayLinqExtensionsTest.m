@@ -109,7 +109,7 @@
 {
     NSArray* input = @[@21, @34, @25];
     
-    NSArray* sortedDescendingInput = [input linq_sort_descending];
+    NSArray* sortedDescendingInput = [input linq_sortDescending];
     
     STAssertEquals(sortedDescendingInput.count, 3U, nil);
     STAssertEqualObjects(sortedDescendingInput[0], @34, nil);
@@ -121,7 +121,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* sortedDescendingByName = [input linq_sort_descending:LINQKey(name)];
+    NSArray* sortedDescendingByName = [input linq_sortDescending:LINQKey(name)];
     
     STAssertEquals(sortedDescendingByName.count, 5U, nil);
     STAssertEquals([sortedDescendingByName[0] name], @"joe", nil);
@@ -135,7 +135,7 @@
 {
     NSArray* input = [self createTestData];
     
-    NSArray* sortedDescendingByName = [input linq_sort_descending:^id(id person) {
+    NSArray* sortedDescendingByName = [input linq_sortDescending:^id(id person) {
         return [[person name] isEqualToString:@"bob"] ? nil : [person name];
         
     }];

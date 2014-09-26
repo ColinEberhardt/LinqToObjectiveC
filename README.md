@@ -115,6 +115,8 @@ NSArray* names = [input linq_select:^id(id person) {
 ```objc
 - (NSArray*) linq_sort;
 - (NSArray*) linq_sort:(LINQSelector)keySelector;
+- (NSArray*) linq_sortDescending;
+- (NSArray*) linq_sortDescending:(LINQSelector)keySelector;
 ```
 
 Sorts the elements of an array, either via their 'natural' sort order, or via a `keySelector`.
@@ -123,7 +125,7 @@ As an example of natural sort, the following sorts a collection of `NSNumber` in
 
 ```objc
 NSArray* input = @[@21, @34, @25];
-NSArray* sortedInput = [input sort];
+NSArray* sortedInput = [input linq_sort]; // 21, 25, 34
 ```
 
 In order to sort an array of Person instances, you can use the key selector:
@@ -132,6 +134,14 @@ In order to sort an array of Person instances, you can use the key selector:
 NSArray* sortedByName = [input linq_sort:^id(id person) {
     return [person name];
 }];
+```
+
+The accompanying 'descending' methods simply reverse the sort order:
+
+```objc
+NSArray* input = @[@21, @34, @25];
+NSArray* sortedInput = [input linq_sort]; // 21, 25, 34
+NSArray* sortedInput = [input linq_sortDescending]; // 34, 25, 21
 ```
     
 ### <a name="ofType"></a>linq_ofType
