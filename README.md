@@ -242,6 +242,7 @@ id biggestNumber = [numbers linq_aggregate:^id(id item, id aggregate) {
 
 ```objc
 - (id) linq_firstOrNil;
+- (id) linq_firstOrNil:(LINQCondition)predicate;
 ```
 
 Returns the first element of an array, or nil if the array is empty.
