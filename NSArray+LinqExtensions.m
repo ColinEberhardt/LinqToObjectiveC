@@ -237,5 +237,9 @@
     return result;
 }
 
+- (NSNumber *)linq_sum
+{
+    return [self valueForKeyPath: @"@sum.self"];
+}
 
 @end

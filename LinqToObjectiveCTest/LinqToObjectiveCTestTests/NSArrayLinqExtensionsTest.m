@@ -478,4 +478,12 @@
     STAssertEqualObjects(result[1], @25, nil);
 }
 
+- (void) testSum
+{
+    NSArray* input = @[@25, @35];
+    
+    NSNumber* sum = [input linq_sum];
+    STAssertEqualObjects(sum, @60, nil);
+}
+
 @end
