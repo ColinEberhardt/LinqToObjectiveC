@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7E8F438D1A8B92D5000F5D01 /* libLinqToObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8F43811A8B92D5000F5D01 /* libLinqToObjectiveC.a */; };
+		7E8F43A11A8B931C000F5D01 /* NSArray+LinqExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8F439E1A8B931C000F5D01 /* NSArray+LinqExtensions.m */; };
+		7E8F43A21A8B931C000F5D01 /* NSDictionary+LinqExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8F43A01A8B931C000F5D01 /* NSDictionary+LinqExtensions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7E8F438E1A8B92D5000F5D01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E8F43791A8B92D5000F5D01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E8F43801A8B92D5000F5D01;
+			remoteInfo = LinqToObjectiveC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7E8F437F1A8B92D5000F5D01 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7E8F43811A8B92D5000F5D01 /* libLinqToObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLinqToObjectiveC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E8F438C1A8B92D5000F5D01 /* LinqToObjectiveCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinqToObjectiveCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E8F43921A8B92D5000F5D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E8F439C1A8B931C000F5D01 /* LinqToObjectiveC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinqToObjectiveC.h; path = ../LinqToObjectiveC.h; sourceTree = "<group>"; };
+		7E8F439D1A8B931C000F5D01 /* NSArray+LinqExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+LinqExtensions.h"; path = "../NSArray+LinqExtensions.h"; sourceTree = "<group>"; };
+		7E8F439E1A8B931C000F5D01 /* NSArray+LinqExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+LinqExtensions.m"; path = "../NSArray+LinqExtensions.m"; sourceTree = "<group>"; };
+		7E8F439F1A8B931C000F5D01 /* NSDictionary+LinqExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+LinqExtensions.h"; path = "../NSDictionary+LinqExtensions.h"; sourceTree = "<group>"; };
+		7E8F43A01A8B931C000F5D01 /* NSDictionary+LinqExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+LinqExtensions.m"; path = "../NSDictionary+LinqExtensions.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7E8F437E1A8B92D5000F5D01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E8F43891A8B92D5000F5D01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E8F438D1A8B92D5000F5D01 /* libLinqToObjectiveC.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7E8F43781A8B92D5000F5D01 = {
+			isa = PBXGroup;
+			children = (
+				7E8F439B1A8B9310000F5D01 /* Sources */,
+				7E8F43901A8B92D5000F5D01 /* LinqToObjectiveCTests */,
+				7E8F43821A8B92D5000F5D01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7E8F43821A8B92D5000F5D01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E8F43811A8B92D5000F5D01 /* libLinqToObjectiveC.a */,
+				7E8F438C1A8B92D5000F5D01 /* LinqToObjectiveCTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7E8F43901A8B92D5000F5D01 /* LinqToObjectiveCTests */ = {
+			isa = PBXGroup;
+			children = (
+				7E8F43911A8B92D5000F5D01 /* Supporting Files */,
+			);
+			path = LinqToObjectiveCTests;
+			sourceTree = "<group>";
+		};
+		7E8F43911A8B92D5000F5D01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E8F43921A8B92D5000F5D01 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7E8F439B1A8B9310000F5D01 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				7E8F439C1A8B931C000F5D01 /* LinqToObjectiveC.h */,
+				7E8F439D1A8B931C000F5D01 /* NSArray+LinqExtensions.h */,
+				7E8F439E1A8B931C000F5D01 /* NSArray+LinqExtensions.m */,
+				7E8F439F1A8B931C000F5D01 /* NSDictionary+LinqExtensions.h */,
+				7E8F43A01A8B931C000F5D01 /* NSDictionary+LinqExtensions.m */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7E8F43801A8B92D5000F5D01 /* LinqToObjectiveC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E8F43951A8B92D5000F5D01 /* Build configuration list for PBXNativeTarget "LinqToObjectiveC" */;
+			buildPhases = (
+				7E8F437D1A8B92D5000F5D01 /* Sources */,
+				7E8F437E1A8B92D5000F5D01 /* Frameworks */,
+				7E8F437F1A8B92D5000F5D01 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LinqToObjectiveC;
+			productName = LinqToObjectiveC;
+			productReference = 7E8F43811A8B92D5000F5D01 /* libLinqToObjectiveC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7E8F438B1A8B92D5000F5D01 /* LinqToObjectiveCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E8F43981A8B92D5000F5D01 /* Build configuration list for PBXNativeTarget "LinqToObjectiveCTests" */;
+			buildPhases = (
+				7E8F43881A8B92D5000F5D01 /* Sources */,
+				7E8F43891A8B92D5000F5D01 /* Frameworks */,
+				7E8F438A1A8B92D5000F5D01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E8F438F1A8B92D5000F5D01 /* PBXTargetDependency */,
+			);
+			name = LinqToObjectiveCTests;
+			productName = LinqToObjectiveCTests;
+			productReference = 7E8F438C1A8B92D5000F5D01 /* LinqToObjectiveCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7E8F43791A8B92D5000F5D01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = scottlogic;
+				TargetAttributes = {
+					7E8F43801A8B92D5000F5D01 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					7E8F438B1A8B92D5000F5D01 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 7E8F437C1A8B92D5000F5D01 /* Build configuration list for PBXProject "LinqToObjectiveC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7E8F43781A8B92D5000F5D01;
+			productRefGroup = 7E8F43821A8B92D5000F5D01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7E8F43801A8B92D5000F5D01 /* LinqToObjectiveC */,
+				7E8F438B1A8B92D5000F5D01 /* LinqToObjectiveCTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E8F438A1A8B92D5000F5D01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E8F437D1A8B92D5000F5D01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E8F43A21A8B931C000F5D01 /* NSDictionary+LinqExtensions.m in Sources */,
+				7E8F43A11A8B931C000F5D01 /* NSArray+LinqExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E8F43881A8B92D5000F5D01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7E8F438F1A8B92D5000F5D01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E8F43801A8B92D5000F5D01 /* LinqToObjectiveC */;
+			targetProxy = 7E8F438E1A8B92D5000F5D01 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7E8F43931A8B92D5000F5D01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7E8F43941A8B92D5000F5D01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7E8F43961A8B92D5000F5D01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7E8F43971A8B92D5000F5D01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7E8F43991A8B92D5000F5D01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LinqToObjectiveCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7E8F439A1A8B92D5000F5D01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LinqToObjectiveCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7E8F437C1A8B92D5000F5D01 /* Build configuration list for PBXProject "LinqToObjectiveC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E8F43931A8B92D5000F5D01 /* Debug */,
+				7E8F43941A8B92D5000F5D01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E8F43951A8B92D5000F5D01 /* Build configuration list for PBXNativeTarget "LinqToObjectiveC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E8F43961A8B92D5000F5D01 /* Debug */,
+				7E8F43971A8B92D5000F5D01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7E8F43981A8B92D5000F5D01 /* Build configuration list for PBXNativeTarget "LinqToObjectiveCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E8F43991A8B92D5000F5D01 /* Debug */,
+				7E8F439A1A8B92D5000F5D01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7E8F43791A8B92D5000F5D01 /* Project object */;
+}

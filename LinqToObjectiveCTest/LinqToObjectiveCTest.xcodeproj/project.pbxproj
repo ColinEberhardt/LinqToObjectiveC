@@ -210,7 +210,7 @@
 			name = LinqToObjectiveCTestTests;
 			productName = LinqToObjectiveCTestTests;
 			productReference = 72EC7E2A17DC4DA0009AA360 /* LinqToObjectiveCTestTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
