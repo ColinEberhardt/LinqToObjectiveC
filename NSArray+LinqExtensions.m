@@ -22,14 +22,43 @@
 }
 
 - (NSArray *)linq_select:(LINQSelector)transform
+          andStopOnError:(BOOL)shouldStopOnError
 {
     NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:self.count];
-    for(id item in self) {
+    for(id item in self)
+    {
         id object = transform(item);
-        [result addObject:(object) ? object : [NSNull null]];
+        if (nil != object)
+        {
+            [result addObject: object];
+        }
+        else
+        {
+            if (shouldStopOnError)
+            {
+                return nil;
+            }
+            else
+            {
+                [result addObject: [NSNull null]];
+            }
+        }
     }
     return result;
 }
+
+- (NSArray *)linq_select:(LINQSelector)transform
+{
+    return [self linq_select: transform
+              andStopOnError: NO];
+}
+
+- (NSArray*)linq_select_AndStopOnError:(LINQSelector)transform
+{
+    return [self linq_select: transform
+              andStopOnError: YES];
+}
+
 
 - (NSArray *)linq_sort:(LINQSelector)keySelector
 {

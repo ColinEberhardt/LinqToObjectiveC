@@ -44,6 +44,8 @@ typedef id (^LINQAccumulator)(id item, id aggregate);
  @return An array whose elements are the result of invoking the transform function on each element of source.
  */
 - (NSArray*) linq_select:(LINQSelector)transform;
+- (NSArray*) linq_select_AndStopOnError:(LINQSelector)transform;
+
 
 /** Sorts the elements of a sequence in ascending order.
  
