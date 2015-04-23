@@ -10,29 +10,29 @@
 	<string>LinqToObjectiveCTest</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>6E8C5637-4BFD-4EDC-8E73-FB93BB9A8932</key>
-		<string>https://github.com/ThesaurusSoftware/LinqToObjectiveC</string>
+		<key>1003DA7B9190CC7AEB6B44F4E63466C7DC01A5F7</key>
+		<string>https://github.com/healthjoy-ios-opensource/LinqToObjectiveC.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LinqToObjectiveCTest/LinqToObjectiveCTest.xcodeproj/project.xcworkspace</string>
+	<string>LinqToObjectiveCTest/LinqToObjectiveCTest.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>6E8C5637-4BFD-4EDC-8E73-FB93BB9A8932</key>
+		<key>1003DA7B9190CC7AEB6B44F4E63466C7DC01A5F7</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/ThesaurusSoftware/BrightPay.OSX.git</string>
+	<string>https://github.com/healthjoy-ios-opensource/LinqToObjectiveC.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>6E8C5637-4BFD-4EDC-8E73-FB93BB9A8932</string>
+	<string>1003DA7B9190CC7AEB6B44F4E63466C7DC01A5F7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6E8C5637-4BFD-4EDC-8E73-FB93BB9A8932</string>
+			<string>1003DA7B9190CC7AEB6B44F4E63466C7DC01A5F7</string>
 			<key>IDESourceControlWCCName</key>
 			<string>LinqToObjectiveC</string>
 		</dict>
