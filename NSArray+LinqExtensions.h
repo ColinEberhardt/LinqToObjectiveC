@@ -203,4 +203,10 @@ the projection fails and returns nil.
  */
 - (NSArray*) linq_reverse;
 
+/** Sums the elements in the array.
+ 
+ @return The sum of elements within this array.
+ */
+- (NSNumber*)linq_sum;
+
 @end
