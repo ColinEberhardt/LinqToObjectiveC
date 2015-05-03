@@ -23,7 +23,7 @@
         return [key isEqual:[value substringToIndex:1]];
     }];
     
-    STAssertEquals(result.allKeys.count, 3U, nil);
+    STAssertEquals(result.allKeys.count, (NSUInteger)3, nil);
     STAssertEqualObjects(result[@"A"], @"Apple", nil);
     STAssertEqualObjects(result[@"B"], @"Banana", nil);
     STAssertEqualObjects(result[@"C"], @"Carrot", nil);
@@ -41,7 +41,7 @@
         return [NSString stringWithFormat:@"%@, %@", key, [value substringToIndex:1]];
     }];
     
-    STAssertEquals(result.allKeys.count, 4U, nil);
+    STAssertEquals(result.allKeys.count, (NSUInteger)4, nil);
     STAssertEqualObjects(result[@"A"], @"A, A", nil);
     STAssertEqualObjects(result[@"B"], @"B, B", nil);
     STAssertEqualObjects(result[@"C"], @"C, C", nil);
@@ -61,7 +61,7 @@
         return [projection isEqualToString:@"A, A"] ? nil : projection;
     }];
     
-    STAssertEquals(result.allKeys.count, 4U, nil);
+    STAssertEquals(result.allKeys.count, (NSUInteger)4, nil);
     STAssertEqualObjects(result[@"A"], [NSNull null], nil);
     STAssertEqualObjects(result[@"B"], @"B, B", nil);
     STAssertEqualObjects(result[@"C"], @"C, C", nil);
@@ -80,7 +80,7 @@
     
     NSLog(@"%@", result);
     
-    STAssertEquals(result.count, 3U, nil);
+    STAssertEquals(result.count, (NSUInteger)3, nil);
     STAssertEqualObjects(result[0], @"A, Apple", nil);
     STAssertEqualObjects(result[1], @"B, Banana", nil);
     STAssertEqualObjects(result[2], @"C, Carrot", nil);
@@ -99,7 +99,7 @@
     
     NSLog(@"%@", result);
     
-    STAssertEquals(result.count, 3U, nil);
+    STAssertEquals(result.count, (NSUInteger)3, nil);
     STAssertEqualObjects(result[0], [NSNull null], nil);
     STAssertEqualObjects(result[1], @"B, Banana", nil);
     STAssertEqualObjects(result[2], @"C, Carrot", nil);
@@ -150,7 +150,7 @@
     NSUInteger valuesThatContainKey = [input linq_count:^BOOL(id key, id value) {
         return [value rangeOfString:key].length != 0;
     }];
-    STAssertEquals(valuesThatContainKey, 2U, nil);
+    STAssertEquals(valuesThatContainKey, (NSUInteger)2, nil);
 }
 
 - (void)testMerge
@@ -166,7 +166,7 @@
     
     NSDictionary* result = [input linq_Merge:merge];
     
-    STAssertEquals(result.allKeys.count, 5U, nil);
+    STAssertEquals(result.allKeys.count, (NSUInteger)5, nil);
     STAssertEqualObjects(result[@"a"], @"apple", nil);
     STAssertEqualObjects(result[@"b"], @"banana", nil);
     STAssertEqualObjects(result[@"c"], @"bat", nil);

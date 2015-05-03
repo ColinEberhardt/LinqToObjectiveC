@@ -27,7 +27,7 @@
     
     NSArray* names = [input linq_select:LINQSel(name)];
     
-    STAssertEquals(names.count, 5U, nil);
+    STAssertEquals(names.count, (NSUInteger)5, nil);
     // 'spot' check a few values
     STAssertEquals(names[0], @"bob", nil);
     STAssertEquals(names[4], @"joe", nil);
@@ -39,7 +39,7 @@
     
     NSArray* ages = [input linq_select:LINQSelUInt(intAge)];
     
-    STAssertEquals(ages.count, 5U, nil);
+    STAssertEquals(ages.count, (NSUInteger)5, nil);
     // 'spot' check a few values
     STAssertEqualObjects(ages[0], @25, nil);
     STAssertEqualObjects(ages[4], @55, nil);
@@ -51,7 +51,7 @@
     
     NSArray* names = [input linq_select:LINQKey(name)];
     
-    STAssertEquals(names.count, 5U, nil);
+    STAssertEquals(names.count, (NSUInteger)5, nil);
     // 'spot' check a few values
     STAssertEquals(names[0], @"bob", nil);
     STAssertEquals(names[4], @"joe", nil);
@@ -63,7 +63,7 @@
     
     NSArray* names = [input linq_select:LINQKeyPath(name)];
     
-    STAssertEquals(names.count, 5U, nil);
+    STAssertEquals(names.count, (NSUInteger)5, nil);
     // 'spot' check a few values
     STAssertEquals(names[0], @"bob", nil);
     STAssertEquals(names[4], @"joe", nil);
