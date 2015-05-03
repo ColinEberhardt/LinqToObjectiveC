@@ -36,6 +36,7 @@ The code within project is made available under the standard MIT licence, see th
 
 - [linq_where](#where)
 - [linq_select](#select)
+- [linq_selectAndStopOnNil](#selectAndStopOnNil)
 - [linq_sort](#sort)
 - [linq_ofType](#ofType)
 - [linq_selectMany](#selectMany)
@@ -109,6 +110,14 @@ NSArray* names = [input linq_select:^id(id person) {
     return [person name];
 }];
 ```
+
+### <a name="selectAndStopOnNil"></a>linq_selectAndStopOnNil
+
+```objc
+- (NSArray*)linq_selectAndStopOnNil:(LINQSelector)transform;
+```
+
+Projects each element of a sequence into a new form. If the transform returns nil for any of the elements, the projection fails and returns nil.
 
 ### <a name="sort"></a>linq_sort
 

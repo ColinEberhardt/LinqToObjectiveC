@@ -53,7 +53,7 @@
               andStopOnError: NO];
 }
 
-- (NSArray*)linq_select_AndStopOnError:(LINQSelector)transform
+- (NSArray*)linq_selectAndStopOnNil:(LINQSelector)transform
 {
     return [self linq_select: transform
               andStopOnError: YES];

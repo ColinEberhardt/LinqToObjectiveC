@@ -62,6 +62,31 @@
     STAssertEquals(names[4], @"joe", nil);
 }
 
+- (void)testSelectAndStopOnNil
+{
+  NSArray* input = [self createTestData];
+  
+  NSArray* names = [input linq_selectAndStopOnNil:^id(id person) {
+    return [person name];
+  }];
+  
+  STAssertEquals(names.count, (NSUInteger)5, nil);
+  // 'spot' check a few values
+  STAssertEquals(names[0], @"bob", nil);
+  STAssertEquals(names[4], @"joe", nil);
+}
+
+- (void)testSelectAndStopOnNilWithNil
+{
+  NSArray* input = [self createTestData];
+  
+  NSArray* names = [input linq_selectAndStopOnNil:^id(id person) {
+    return [[person name] isEqualToString:@"bob"] ? nil : [person name];
+  }];
+  
+  STAssertNil(names, nil);
+}
+
 - (void)testSort
 {
     NSArray* input = @[@21, @34, @25];
