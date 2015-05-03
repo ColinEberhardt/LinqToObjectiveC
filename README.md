@@ -153,6 +153,14 @@ NSArray* sortedInput = [input linq_sort]; // 21, 25, 34
 NSArray* sortedInput = [input linq_sortDescending]; // 34, 25, 21
 ```
     
+### <a name="sum"></a>linq_sum
+
+```objc
+- (NSNumber *)linq_sum;
+```
+
+Sums the elements in the array.
+
 ### <a name="ofType"></a>linq_ofType
 
 ```objc
