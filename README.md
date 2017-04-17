@@ -25,7 +25,7 @@ NSArray* surnamesList = [[[[people linq_select:surnameSelector]
 
 For a detailed discussion of the history of Linq and why I implemented this API, see the [related blog post](http://www.scottlogic.co.uk/blog/colin/2013/02/linq-to-objective-c/).
 
-#Licence
+# Licence
 
 The code within project is made available under the standard MIT licence, see the included licence file.
 
